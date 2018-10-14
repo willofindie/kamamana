@@ -1,0 +1,9 @@
+{
+  "presets": [
+    "react-app",
+    "@babel/preset-flow"
+  ],
+  "plugins": [
+    "styled-jsx/babel"
+  ]
+}
