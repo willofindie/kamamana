@@ -1,4 +1,4 @@
-import type {Node} from 'react';
+import type { Node } from 'react';
 
 export type Props = {
   // Styles specific Props
@@ -12,5 +12,5 @@ export type Props = {
   disabled?: boolean,
   text: string,
   portraitIcon?: boolean,
-  icon?: Node
-}
+  icon?: Node,
+};

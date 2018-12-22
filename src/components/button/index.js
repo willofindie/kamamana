@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import pallete from '../../utils/pallete';
 
 // Import Types
-import type { Props } from './index.d'
+import type { Props } from './index.d';
 
 export default class Button extends Component<Props> {
   render() {
