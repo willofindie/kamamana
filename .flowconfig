@@ -1,13 +1,18 @@
 [ignore]
 .*/dist/.*
+.*/node_modules/.*
+.*/.storybook/.*
+.*/stories/.*
+.*/temp/.*
 
 [include]
-.*/src/.*
+./src
 
 [libs]
 
 [lints]
 
 [options]
+all=true
 
 [strict]

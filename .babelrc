@@ -1,9 +1,12 @@
 {
   "presets": [
-    "react-app",
+    "@babel/preset-env",
     "@babel/preset-flow"
   ],
   "plugins": [
-    "styled-jsx/babel"
+    ["@babel/proposal-class-properties", { "loose": true }],
+    ["@babel/plugin-proposal-object-rest-spread", { "loose": true }],
+    "@babel/plugin-transform-template-literals",
+    "@babel/plugin-transform-parameters"
   ]
 }
