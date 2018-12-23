@@ -74,7 +74,9 @@ typings/
 
 # Build Directories
 temp/
+.stats/
 build/
+dist/
 .out/
 
 # Secrets

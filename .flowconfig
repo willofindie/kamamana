@@ -5,9 +5,10 @@
 .*/stories/.*
 .*/__tests__/.*
 .*/temp/.*
+.*/rollup.config.js
 
 [include]
-./src
+.*/src/.*
 
 [libs]
 flow-typed/npm/nano-css_v3.4.0.js
