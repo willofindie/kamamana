@@ -4,6 +4,16 @@
     ["@babel/proposal-class-properties", { "loose": true }],
     ["@babel/plugin-proposal-object-rest-spread", { "loose": true }],
     "@babel/plugin-transform-template-literals",
-    "@babel/plugin-transform-parameters"
+    "@babel/plugin-transform-parameters",
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "^src/(.*)": "./src/\\1",
+          "^components/(.*)": "./src/components/\\1",
+          "^utils/(.*)": "./src/utils/\\1"
+        }
+      }
+    ]
   ]
 }

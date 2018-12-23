@@ -4,8 +4,10 @@ export type Props = {
   // Styles specific Props
   bg?: string,
   fg?: string,
+  border?: string,
   bgHover?: string,
   fgHover?: string,
+  borderHover?: string,
   ghost?: boolean,
   block?: boolean,
   // Button-DOM Specific Props
@@ -13,4 +15,7 @@ export type Props = {
   text: string,
   portraitIcon?: boolean,
   icon?: Node,
+
+  // Default Props
+  className?: string,
 };

@@ -1,15 +1,12 @@
 import React, { Fragment } from 'react';
 import { storiesOf } from '@storybook/react';
-import pallete from '../../src/utils/pallete';
+import pallete from 'utils/pallete';
 
-import Button from '../../src/components/button';
+import Button from 'components/button';
 
 const button = storiesOf('Buttons', module);
 
-button.add('default', () => (
-  <Button
-    text='Click Me'
-  />
-));
+button.add('default', () => <Button text='Click Me' />);
+button.add('disabled', () => <Button disabled text='Click Me' />);
 
 export default button;

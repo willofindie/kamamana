@@ -9,10 +9,14 @@
 ./src
 
 [libs]
+flow-typed/npm/nano-css_v3.4.0.js
 
 [lints]
 
 [options]
 all=true
+module.name_mapper='^src' ->'<PROJECT_ROOT>/src'
+module.name_mapper='^components' ->'<PROJECT_ROOT>/src/components'
+module.name_mapper='^utils' ->'<PROJECT_ROOT>/src/utils'
 
 [strict]
