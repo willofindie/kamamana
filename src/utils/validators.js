@@ -1,6 +1,7 @@
 export const isString = (string: any) => typeof string === 'string' || string instanceof String;
 
-export const isEmpty = (data: any) => data === null || data === undefined || isNaN(data);
+export const isEmpty = (data: any) =>
+  data === null || data === undefined || (typeof data === 'number' && isNaN(data));
 
 export const isNumber = (number: any) => typeof number === 'number' || number instanceof Number;
 

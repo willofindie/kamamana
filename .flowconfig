@@ -3,6 +3,7 @@
 .*/node_modules/.*
 .*/.storybook/.*
 .*/stories/.*
+.*/__tests__/.*
 .*/temp/.*
 
 [include]
@@ -10,6 +11,7 @@
 
 [libs]
 flow-typed/npm/nano-css_v3.4.0.js
+flow-typed/npm/jest_v23.x.x.js
 
 [lints]
 
