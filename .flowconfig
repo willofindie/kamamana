@@ -2,7 +2,6 @@
 .*/dist/.*
 .*/node_modules/.*
 .*/.storybook/.*
-.*/stories/.*
 .*/__tests__/.*
 .*/temp/.*
 .*/rollup.config.js
@@ -14,6 +13,7 @@
 [libs]
 flow-typed/npm/nano-css_v3.4.0.js
 flow-typed/npm/jest_v23.x.x.js
+flow-typed/npm/@storybook/react_v4.x.x.js
 
 [lints]
 
