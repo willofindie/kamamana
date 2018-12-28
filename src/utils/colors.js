@@ -1,5 +1,7 @@
 // Help taken from - https://stackoverflow.com/a/5624139/2849127
 
+type Color = { r: number, g: number, b: number, a?: number };
+
 // Tests for emptiness for strings and numbers only...
 // For empty object, collection, map, or set, use `lodash.isEmpty`
 export const isEmptyWithoutZero = (value: any) => {
@@ -9,8 +11,8 @@ export const isEmptyWithoutZero = (value: any) => {
 };
 
 /**
- * Returns and array of [red, blue, green], else []
- * @param {string} rgbString RGB string of format rgb(red, green, blue)
+ * Returns and array of [r, g, b], else []
+ * @param {string} rgbString RGB string of format rgb(r, g, b)
  */
 export const splitRGBfromRGBString = (rgbString: string): Array<string> => {
   const result: ?Array<string> = /^rgb\(\s*?(\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\s*\)$/i.exec(
@@ -36,27 +38,70 @@ export const componentToHex = (c: number) => {
 };
 
 /**
- * Excepts a string of format `rgb(red, green, blue)`
+ * Excepts a string of format `rgb(r, g, b)`
  * @param {string} rgb RGB CSS String to convert to Hex
  */
-export const rgbToHex = (rgb: string) => {
-  const [red, green, blue] = splitRGBfromRGBString(rgb).map(val => componentToHex(parseInt(val)));
-  return red && green && blue ? `#${red}${green}${blue}` : null;
+export const rgbToHex = (rgb: string | Color) => {
+  let r, g, b;
+  if (typeof rgb === 'string') {
+    [r, g, b] = splitRGBfromRGBString(rgb).map(val => componentToHex(parseInt(val)));
+  } else if (typeof rgb === 'object' && rgb.hasOwnProperty('r')) {
+    r = componentToHex(parseInt(rgb.r));
+    g = componentToHex(parseInt(rgb.g));
+    b = componentToHex(parseInt(rgb.b));
+  }
+  return r && g && b ? `#${r}${g}${b}` : null;
 };
 
 export const hexToRgb = (hex: string) => {
-  const [red, green, blue] = extractIntegerFromHexString(hex);
-  return !isNaN(red) && !isNaN(green) && !isNaN(blue) ? { red, green, blue } : null;
+  const [r, g, b] = extractIntegerFromHexString(hex);
+  return !isNaN(r) && !isNaN(g) && !isNaN(b) ? { r, g, b } : null;
+};
+
+export const getBoundedChangeAmount = (amount: number = 0) => {
+  const _amount = amount < 0 ? 0 : amount > 100 ? 100 : amount;
+  return (_amount / 100) * 255;
+};
+
+/**
+ * This method is not the efficient way for lightening the colors.. Will understand and figure things out later
+ * v0.1 :P
+ * It's easiest possible way to shade colors, help taken from https://stackoverflow.com/a/13542669/2849127
+ */
+export const shader = (color: Color, amount: number) => {
+  if (
+    color &&
+    color.hasOwnProperty('r') &&
+    color.hasOwnProperty('g') &&
+    color.hasOwnProperty('b')
+  ) {
+    let { r, g, b } = color;
+    r = r + amount;
+    g = g + amount;
+    b = b + amount;
+    return {
+      r: r > 255 ? 255 : r < 0 ? 0 : Math.round(r),
+      g: g > 255 ? 255 : g < 0 ? 0 : Math.round(g),
+      b: b > 255 ? 255 : b < 0 ? 0 : Math.round(b),
+    };
+  }
+  return color;
+};
+
+// Wanted to use composition here, but not sure if it's possible with these functions??
+export const lighten = (color: Color, amount: number) => {
+  return shader(color, getBoundedChangeAmount(amount));
+};
+
+export const darken = (color: Color, amount: number) => {
+  return shader(color, -getBoundedChangeAmount(amount));
 };
 
 // Help taken from https://github.com/mapbox/react-colorpickr/blob/5c7d8498c539a99c1330a83b4c7d6a79b7daaff9/src/colorfunc.js#L6
-export const isDark = (color: ?{ red: number, green: number, blue: number, alpha?: number }) => {
+export const isDark = (color: Color) => {
   if (color) {
-    const { red, green, blue, alpha } = color;
-    return !(
-      red * 0.299 + green * 0.587 + blue * 0.114 > 186 ||
-      (typeof alpha === 'number' ? alpha < 0.5 : false)
-    );
+    const { r, g, b } = color;
+    return !(r * 0.299 + g * 0.587 + b * 0.114 > 186);
   }
   return false;
 };

@@ -54,10 +54,36 @@ describe('get proper length string from hex value', () => {
   });
 });
 
+it('should properly return a value between [0 - 255]', () => {
+  const { getBoundedChangeAmount } = colors;
+  expect(getBoundedChangeAmount(30)).toBe(76.5);
+  expect(getBoundedChangeAmount(-1)).toBe(0);
+  expect(getBoundedChangeAmount(200)).toBe(255);
+});
+
+it('should add the passed amount to each part of the COLOR, COLOR stays in range [0 - 255] always', () => {
+  const { shader } = colors;
+  const color = { r: 24, g: 12, b: 250 };
+  expect(shader(color, 12)).toEqual({
+    r: 36,
+    g: 24,
+    b: 255,
+  });
+  expect(shader(color, -14)).toEqual({
+    r: 10,
+    g: 0,
+    b: 236,
+  });
+});
+
 describe('converts RGB to Hex String', () => {
   const { rgbToHex } = colors;
-  it('should pass for valid input', () => {
+  it('should pass for valid string', () => {
     expect(rgbToHex('rgb(242, 242, 171)')).toEqual('#f2f2ab');
+  });
+
+  it('should pass for valid Color Object', () => {
+    expect(rgbToHex({ r: 242, g: 242, b: 171 })).toEqual('#f2f2ab');
   });
 
   it('should fail and return null', () => {
@@ -69,9 +95,9 @@ describe('converts HEX to RGB Object', () => {
   const { hexToRgb } = colors;
   it('should pass for valid input', () => {
     expect(hexToRgb('#f2f2ab')).toEqual({
-      red: 242,
-      green: 242,
-      blue: 171,
+      r: 242,
+      g: 242,
+      b: 171,
     });
   });
 
@@ -85,10 +111,22 @@ describe('tests for color to be dark', () => {
   it('should pass for valid input', () => {
     expect(
       isDark({
-        red: 242,
-        green: 242,
-        blue: 171,
+        r: 242,
+        g: 242,
+        b: 171,
       })
     ).toBeFalsy();
   });
+});
+
+it('should lighten the color', () => {
+  const { lighten } = colors;
+  const color = { r: 12, g: 24, b: 250 };
+  expect(lighten(color, 10)).toEqual({ r: 38, g: 50, b: 255 });
+});
+
+it('should darken the color', () => {
+  const { darken } = colors;
+  const color = { r: 12, g: 24, b: 250 };
+  expect(darken(color, 24)).toEqual({ r: 0, g: 0, b: 189 });
 });
