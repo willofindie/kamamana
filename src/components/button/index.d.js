@@ -1,13 +1,11 @@
 import type { Node } from 'react';
 
 export type Props = {
+  theme?: any,
+  style?: any,
   // Styles specific Props
-  bg?: string,
-  fg?: string,
-  border?: string,
-  bgHover?: string,
-  fgHover?: string,
-  borderHover?: string,
+  bgHoverC?: string, // Background Hover Color
+  fgHoverC?: string, // Text Hover Color
   ghost?: boolean,
   block?: boolean,
   // Button-DOM Specific Props
@@ -18,4 +16,14 @@ export type Props = {
 
   // Default Props
   className?: string,
+};
+
+export type Theme = {
+  fz?: string | number,
+  bgc?: string,
+  c?: string,
+};
+
+export type State = {
+  theme: Theme,
 };

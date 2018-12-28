@@ -1,6 +1,6 @@
 // Help taken from - https://stackoverflow.com/a/5624139/2849127
 
-type Color = { r: number, g: number, b: number, a?: number };
+export type Color = { r: number, g: number, b: number, a?: number };
 
 // Tests for emptiness for strings and numbers only...
 // For empty object, collection, map, or set, use `lodash.isEmpty`
@@ -21,11 +21,12 @@ export const splitRGBfromRGBString = (rgbString: string): Array<string> => {
   return result ? result.splice(1) : [];
 };
 
-export const extractIntegerFromHexString = (hexString: string): Array<number> => {
+export const extractIntegerFromHexString = (hexString: ?string): Array<number> => {
   // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
   var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-  const _hex = hexString.replace(shorthandRegex, (m, r, g, b) => `#${r + r}${g + g}${b + b}`);
-  const result: ?Array<string> = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(_hex);
+  const _hex =
+    hexString && hexString.replace(shorthandRegex, (m, r, g, b) => `#${r + r}${g + g}${b + b}`);
+  const result: ?Array<string> = _hex ? /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(_hex) : [];
   return result ? result.splice(1).map(val => parseInt(val, 16)) : [];
 };
 
@@ -41,8 +42,11 @@ export const componentToHex = (c: number) => {
  * Excepts a string of format `rgb(r, g, b)`
  * @param {string} rgb RGB CSS String to convert to Hex
  */
-export const rgbToHex = (rgb: string | Color) => {
+export const rgbToHex = (rgb: ?string | ?Color) => {
   let r, g, b;
+  if (!rgb) {
+    return null;
+  }
   if (typeof rgb === 'string') {
     [r, g, b] = splitRGBfromRGBString(rgb).map(val => componentToHex(parseInt(val)));
   } else if (typeof rgb === 'object' && rgb.hasOwnProperty('r')) {
@@ -53,7 +57,7 @@ export const rgbToHex = (rgb: string | Color) => {
   return r && g && b ? `#${r}${g}${b}` : null;
 };
 
-export const hexToRgb = (hex: string) => {
+export const hexToRgb = (hex: ?string): ?Color => {
   const [r, g, b] = extractIntegerFromHexString(hex);
   return !isNaN(r) && !isNaN(g) && !isNaN(b) ? { r, g, b } : null;
 };
@@ -68,7 +72,7 @@ export const getBoundedChangeAmount = (amount: number = 0) => {
  * v0.1 :P
  * It's easiest possible way to shade colors, help taken from https://stackoverflow.com/a/13542669/2849127
  */
-export const shader = (color: Color, amount: number) => {
+export const shader = (color: ?Color, amount: number): ?Color => {
   if (
     color &&
     color.hasOwnProperty('r') &&
@@ -89,16 +93,16 @@ export const shader = (color: Color, amount: number) => {
 };
 
 // Wanted to use composition here, but not sure if it's possible with these functions??
-export const lighten = (color: Color, amount: number) => {
+export const lighten = (color: ?Color, amount: number) => {
   return shader(color, getBoundedChangeAmount(amount));
 };
 
-export const darken = (color: Color, amount: number) => {
+export const darken = (color: ?Color, amount: number) => {
   return shader(color, -getBoundedChangeAmount(amount));
 };
 
 // Help taken from https://github.com/mapbox/react-colorpickr/blob/5c7d8498c539a99c1330a83b4c7d6a79b7daaff9/src/colorfunc.js#L6
-export const isDark = (color: Color) => {
+export const isDark = (color: ?Color) => {
   if (color) {
     const { r, g, b } = color;
     return !(r * 0.299 + g * 0.587 + b * 0.114 > 186);

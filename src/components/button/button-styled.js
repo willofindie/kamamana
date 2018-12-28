@@ -1,4 +1,4 @@
-import pallete from 'utils/pallete';
+import defaultTheme from 'src/theme';
 
 import { jsx } from 'src/nano';
 
@@ -19,9 +19,9 @@ const Button = jsx(
     },
     '&[disabled], &.disabled': {
       cursor: 'not-allowed',
-      backgroundColor: pallete.grey[100],
-      color: pallete.grey[300],
-      border: `1px solid ${pallete.grey[200]}`,
+      backgroundColor: defaultTheme.light.disabled,
+      color: defaultTheme.light.disabledFg,
+      border: `1px solid ${defaultTheme.light.disabledFg}`,
     },
     '& .btn-icon': {
       verticalAlign: 'middle',

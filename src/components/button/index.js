@@ -1,65 +1,82 @@
 import React, { Component } from 'react';
 import ButtonStyled from './button-styled';
-import pallete from 'utils/pallete';
-import { isDark, hexToRgb } from 'utils/colors';
+import defaultTheme from 'src/theme';
+import { darken, isDark, hexToRgb, rgbToHex } from 'utils/colors';
+import filterKeys from 'utils/filterKeys';
 
 // Import Types
-import type { Props } from './index.d';
+import type { Color } from 'utils/colors';
+import type { Props, State, Theme } from './index.d';
 
-export default class Button extends Component<Props> {
-  get bgColor() {
-    return this.props.bg || pallete.white;
+export default class Button extends Component<Props, State> {
+  get filteredStyleProp(): Theme {
+    return filterKeys(this.props.style);
   }
-  get bgHoverColor() {
-    return this.props.bgHover || pallete.blueGrey[500];
+  get filteredBtnThemeProp(): Theme {
+    if (this.props.theme) {
+      return filterKeys(this.props.theme.btn);
+    }
+    return {};
   }
-  get fgColor() {
+  get bgHoverC(): string {
+    const defaultC = rgbToHex(darken(hexToRgb(this.state.theme.bgc), 10));
+    return this.props.bgHoverC || (defaultC ? defaultC : defaultTheme.light.primary);
+  }
+  get fgHoverC() {
     return (
-      this.props.fg || (isDark(hexToRgb(this.bgColor)) ? pallete.white : pallete.blueGrey[500])
-    );
-  }
-  get fgHoverColor() {
-    return (
-      this.props.fgHover ||
-      (isDark(hexToRgb(this.bgHoverColor)) ? pallete.white : pallete.blueGrey[500])
+      this.props.bgHoverC ||
+      (isDark(hexToRgb(this.bgHoverC)) ? defaultTheme.fadedWhite : defaultTheme.fadedBlack)
     );
   }
   get border() {
-    return `1px solid ${this.props.border || this.bgHoverColor}`;
+    return `1px solid ${this.state.theme.bgc ? this.state.theme.bgc : defaultTheme.light.primary}`;
   }
-  get borderHover() {
-    return `1px solid ${this.props.borderHover || this.bgHoverColor}`;
+  get borderHoverC() {
+    return `1px solid ${this.bgHoverC}`;
+  }
+
+  getDefaultState = (): Theme => ({
+    fz: defaultTheme.btn.fz,
+    c: defaultTheme.light.primaryFg,
+    bgc: defaultTheme.light.primary,
+  });
+
+  // Theme precedence... defaultTheme < props.theme < props.style
+  constructor(props: Props) {
+    super(props);
+    const defaults: Theme = this.getDefaultState();
+    const filteredPropsStyle = this.filteredStyleProp;
+    const filteredPropsBtnTheme = this.filteredBtnThemeProp;
+    if (props.theme) {
+      this.state = {
+        theme: { ...defaults, ...filteredPropsBtnTheme, ...filteredPropsStyle },
+      };
+    } else {
+      this.state = {
+        theme: { ...defaults, ...filteredPropsStyle },
+      };
+    }
   }
 
   render() {
-    const {
-      text,
-      bg,
-      fg,
-      fgHover,
-      bgHover,
-      disabled,
-      block,
-      icon,
-      portraitIcon,
-      className,
-      ...rest
-    } = this.props;
+    const { text, disabled, block, icon, portraitIcon, className, ...rest } = this.props;
     const css = {
-      backgroundColor: this.bgColor,
-      color: this.fgColor,
-      border: this.border,
+      bgc: this.state.theme.bgc,
+      c: this.state.theme.c,
+      bd: this.border,
       '&:hover': {
         '&:not([disabled])': {
-          backgroundColor: this.bgHoverColor,
-          color: this.fgHoverColor,
-          border: this.borderHover,
+          bgc: this.bgHoverC,
+          c: this.fgHoverC,
+          bd: this.borderHoverC,
         },
       },
     };
-    const iconBg = portraitIcon && {
-      bg: pallete.white,
-    };
+    const iconBg =
+      portraitIcon &&
+      {
+        // bg: pallete.white,
+      };
     return (
       <ButtonStyled css={css} disabled={disabled} className={className}>
         {text}

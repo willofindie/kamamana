@@ -10,7 +10,7 @@
   ],
   "main": "src/index.js",
   "dependencies": {
-    "nano-css": "^3.4.0"
+    "nano-css": "^3.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",

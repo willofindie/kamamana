@@ -11,7 +11,7 @@
 .*/src/.*
 
 [libs]
-flow-typed/npm/nano-css_v3.4.0.js
+flow-typed/npm/nano-css_vx.x.x.js
 flow-typed/npm/jest_v23.x.x.js
 flow-typed/npm/@storybook/react_v4.x.x.js
 

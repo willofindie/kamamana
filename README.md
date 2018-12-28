@@ -25,6 +25,7 @@ Just one small CSS-to-JS dependency, for creating components:
 
 Using [Flow Types](https://flow.org) for type-checks, instead of `prop-types`, as it is more robust. Well, there are few cons of it too. Some of them, which I felt exist was:
 
+- It has a bit of a learning curve...
 - Not well supported yet by Rollup, for extracting it out of your library.
   - [rollup-pugin-flow](https://github.com/leebyron/rollup-plugin-flow), to extract out flow types from library, but there's some
     issue with this library, as it is not able to properly create source.maps for the build. Will figure it out someday, or someone else will.
