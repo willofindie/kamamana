@@ -15,6 +15,7 @@ addDecorator(
 function loadStories() {
   require('../stories/buttons');
   require('../stories/card');
+  require('../stories/flexbox');
 }
 
 configure(loadStories, module);
