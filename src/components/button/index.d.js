@@ -6,12 +6,12 @@ export type Props = {
   // Styles specific Props
   bgHoverC?: string, // Background Hover Color
   fgHoverC?: string, // Text Hover Color
-  ghost?: boolean,
+
+  type?: 'bordered' | 'ghost',
   block?: boolean,
   // Button-DOM Specific Props
   disabled?: boolean,
   text: string,
-  portraitIcon?: boolean,
   icon?: Node,
 
   // Default Props
@@ -22,6 +22,7 @@ export type Theme = {
   fz?: string | number,
   bgc?: string,
   c?: string,
+  bdc?: string,
 };
 
 export type State = {

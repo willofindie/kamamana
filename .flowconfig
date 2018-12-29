@@ -23,5 +23,7 @@ module.name_mapper='^src' ->'<PROJECT_ROOT>/src'
 module.name_mapper='^components' ->'<PROJECT_ROOT>/src/components'
 module.name_mapper='^utils' ->'<PROJECT_ROOT>/src/utils'
 module.name_mapper='^kamamana' ->'<PROJECT_ROOT>/dist/index.min'
+# https://github.com/facebook/flow/issues/3850
+module.ignore_non_literal_requires=true
 
 [strict]

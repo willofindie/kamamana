@@ -18,21 +18,64 @@ export default class Button extends Component<Props, State> {
     }
     return {};
   }
+  get isGhostType(): boolean {
+    return this.props.type === 'ghost'; // Means Background is transparent, ALWAYS and Border animates
+  }
+  get isBorderedType(): boolean {
+    return this.props.type === 'bordered'; // Means Background is white, Always, and Border animates
+  }
+  // Background related Colors...
+  get bgc(): ?string {
+    if (this.isGhostType) {
+      return 'transparent';
+    } else if (this.isBorderedType) {
+      return defaultTheme.fadedWhite;
+    }
+    return this.state.theme.bgc;
+  }
   get bgHoverC(): string {
     const defaultC = rgbToHex(darken(hexToRgb(this.state.theme.bgc), 10));
+    if (this.isGhostType) {
+      return 'transparent';
+    } else if (this.isBorderedType) {
+      return defaultTheme.fadedWhite;
+    }
     return this.props.bgHoverC || (defaultC ? defaultC : defaultTheme.light.primary);
   }
+  // Foreground related Colors...
+  get fgc(): string {
+    if (this.isGhostType) {
+      return defaultTheme.fadedWhite;
+    } else if (this.isBorderedType) {
+      return defaultTheme.fadedBlack;
+    }
+    return this.state.theme.c || defaultTheme.fadedBlack;
+  }
   get fgHoverC() {
+    if (this.isGhostType || this.isBorderedType) {
+      return this.props.fgHoverC || defaultTheme.light.primary;
+    }
     return (
-      this.props.bgHoverC ||
+      this.props.fgHoverC ||
       (isDark(hexToRgb(this.bgHoverC)) ? defaultTheme.fadedWhite : defaultTheme.fadedBlack)
     );
   }
+  // Border related Colors...
   get border() {
-    return `1px solid ${this.state.theme.bgc ? this.state.theme.bgc : defaultTheme.light.primary}`;
+    let bdc =
+      this.state.theme.bdc ||
+      (this.state.theme.bgc ? this.state.theme.bgc : defaultTheme.light.primary);
+    if (this.isGhostType || this.isBorderedType) {
+      bdc = this.state.theme.bdc || this.fgc;
+    }
+    return `1px solid ${bdc}`;
   }
   get borderHoverC() {
-    return `1px solid ${this.bgHoverC}`;
+    let bdc = this.state.theme.bdc || this.bgHoverC;
+    if (this.isGhostType || this.isBorderedType) {
+      bdc = this.state.theme.bdc || this.fgHoverC;
+    }
+    return `1px solid ${bdc}`;
   }
 
   getDefaultState = (): Theme => ({
@@ -59,10 +102,22 @@ export default class Button extends Component<Props, State> {
   }
 
   render() {
-    const { text, disabled, block, icon, portraitIcon, className, ...rest } = this.props;
+    const {
+      theme,
+      style,
+      bgHoverC,
+      fgHoverC,
+      type,
+      block,
+      text,
+      disabled,
+      icon,
+      className,
+      ...rest
+    } = this.props;
     const css = {
-      bgc: this.state.theme.bgc,
-      c: this.state.theme.c,
+      bgc: this.bgc,
+      c: this.fgc,
       bd: this.border,
       '&:hover': {
         '&:not([disabled])': {
@@ -72,13 +127,8 @@ export default class Button extends Component<Props, State> {
         },
       },
     };
-    const iconBg =
-      portraitIcon &&
-      {
-        // bg: pallete.white,
-      };
     return (
-      <ButtonStyled css={css} disabled={disabled} className={className}>
+      <ButtonStyled css={css} disabled={disabled} className={className} {...rest}>
         {text}
       </ButtonStyled>
     );

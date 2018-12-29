@@ -11,7 +11,8 @@
         "alias": {
           "^src/(.*)": "./src/\\1",
           "^components/(.*)": "./src/components/\\1",
-          "^utils/(.*)": "./src/utils/\\1"
+          "^utils/(.*)": "./src/utils/\\1",
+          "^icons/(.*)": "./src/icons/\\1"
         }
       }
     ]

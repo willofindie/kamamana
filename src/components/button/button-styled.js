@@ -6,31 +6,31 @@ import { jsx } from 'src/nano';
 const Button = jsx(
   'button',
   {
-    boxSizing: 'border-box',
-    borderRadius: '2px',
-    fontSize: '14px',
-    lineHeight: 1.4,
-    margin: '0 8px 15px 0',
-    padding: '5px 10px',
-    cursor: 'pointer',
-    transition: 'all 0.3s ease-out',
+    bxz: 'border-box',
+    bdrs: '2px',
+    fz: '14px',
+    lh: 2.2,
+    m: '0 8px 15px 0',
+    p: '0 10px',
+    cur: 'pointer',
+    trs: 'all 0.3s ease-out',
     '&:focus': {
-      outline: 'none',
+      ol: 'none',
     },
     '&[disabled], &.disabled': {
-      cursor: 'not-allowed',
-      backgroundColor: defaultTheme.light.disabled,
-      color: defaultTheme.light.disabledFg,
-      border: `1px solid ${defaultTheme.light.disabledFg}`,
+      cur: 'not-allowed',
+      bgc: defaultTheme.light.disabled,
+      c: defaultTheme.light.disabledFg,
+      bd: `1px solid ${defaultTheme.light.disabledFg}`,
     },
     '& .btn-icon': {
-      verticalAlign: 'middle',
+      va: 'middle',
     },
     '& .btn-text': {
-      fontSize: '14px',
+      fz: '14px',
     },
     '& .btn-icon + .btn-text': {
-      marginLeft: '8px',
+      ml: '8px',
     },
   },
   'ButtonStyled'
