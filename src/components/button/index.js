@@ -126,6 +126,7 @@ export default class Button extends Component<Props, State> {
           bd: this.borderHoverC,
         },
       },
+      ...style,
     };
     return (
       <ButtonStyled css={css} disabled={disabled} className={className} {...rest}>

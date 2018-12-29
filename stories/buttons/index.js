@@ -15,5 +15,13 @@ button.add('ghost', () => (
   </div>
 ));
 button.add('disabled', () => <Button disabled text='Click Me' />);
+button.add('custom', () => (
+  <Button
+    style={{ bdrs: 100, c: '#E65100', bgc: '#FFAB00', fz: 24, fw: 'bold', p: '5px 20px' }}
+    fgHoverC='#FFAB00'
+    bgHoverC='#E65100'
+    text='Click Me'
+  />
+));
 
 export default button;
