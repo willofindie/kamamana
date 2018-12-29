@@ -1,7 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { storiesOf } from '@storybook/react';
 import CenterDecorator from '../story-components/center-decorator';
-import pallete from 'utils/pallete';
 
 import Button from 'components/button';
 

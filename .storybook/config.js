@@ -8,12 +8,13 @@ addDecorator(
     url: 'http://shub1427.github.io',
     goFullScreen: false,
     showSearchBox: false,
-    addonPanelInRight: true
+    addonPanelInRight: true,
   })
 );
 
 function loadStories() {
   require('../stories/buttons');
+  require('../stories/card');
 }
 
 configure(loadStories, module);
