@@ -6,12 +6,14 @@ import { jsx } from 'src/nano';
 const Button = jsx(
   'button',
   {
+    d: 'flex',
+    ai: 'center',
     bxz: 'border-box',
     bdrs: '2px',
-    fz: '14px',
-    lh: 2.2,
+    fz: '16px',
+    lh: 1.4,
     m: '0 8px 15px 0',
-    p: '0 10px',
+    p: '8px 15px',
     cur: 'pointer',
     trs: 'all 0.3s ease-out',
     '&:focus': {
@@ -24,7 +26,7 @@ const Button = jsx(
       bd: `1px solid ${defaultTheme.light.disabledFg}`,
     },
     '& .btn-icon': {
-      va: 'middle',
+      mr: 8,
     },
     '& .btn-text': {
       fz: '14px',

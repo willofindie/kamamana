@@ -12,7 +12,9 @@ export type Props = {
   // Button-DOM Specific Props
   disabled?: boolean,
   text: string,
-  icon?: Node,
+  icon?: string,
+  iconW: string,
+  iconH: string,
 
   // Default Props
   className?: string,

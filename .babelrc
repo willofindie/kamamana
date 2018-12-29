@@ -5,14 +5,14 @@
     ["@babel/plugin-proposal-object-rest-spread", { "loose": true }],
     "@babel/plugin-transform-template-literals",
     "@babel/plugin-transform-parameters",
+    "@babel/plugin-syntax-dynamic-import",
     [
       "module-resolver",
       {
         "alias": {
           "^src/(.*)": "./src/\\1",
           "^components/(.*)": "./src/components/\\1",
-          "^utils/(.*)": "./src/utils/\\1",
-          "^icons/(.*)": "./src/icons/\\1"
+          "^utils/(.*)": "./src/utils/\\1"
         }
       }
     ]

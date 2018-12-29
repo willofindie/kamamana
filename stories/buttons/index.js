@@ -23,5 +23,17 @@ button.add('custom', () => (
     text='Click Me'
   />
 ));
-
+button.add('with icon', () => (
+  <Button icon='google' fgHoverC='#0277BD' type='bordered' text='Click Me' />
+));
+button.add('with custom icon size', () => (
+  <Button
+    icon='google'
+    iconW='20px'
+    iconH='20px'
+    fgHoverC='#0277BD'
+    type='bordered'
+    text='Click Me'
+  />
+));
 export default button;

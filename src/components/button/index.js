@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ButtonStyled from './button-styled';
+import Icon from 'src/icons';
 import defaultTheme from 'src/theme';
 import { darken, isDark, hexToRgb, rgbToHex } from 'utils/colors';
 import filterKeys from 'utils/filterKeys';
@@ -9,6 +10,11 @@ import type { Color } from 'utils/colors';
 import type { Props, State, Theme } from './index.d';
 
 export default class Button extends Component<Props, State> {
+  static defaultProps = {
+    iconW: '16px',
+    iconH: '16px',
+  };
+
   get filteredStyleProp(): Theme {
     return filterKeys(this.props.style);
   }
@@ -112,6 +118,8 @@ export default class Button extends Component<Props, State> {
       text,
       disabled,
       icon,
+      iconW,
+      iconH,
       className,
       ...rest
     } = this.props;
@@ -130,7 +138,8 @@ export default class Button extends Component<Props, State> {
     };
     return (
       <ButtonStyled css={css} disabled={disabled} className={className} {...rest}>
-        {text}
+        {icon && <Icon className='btn-icon' icon={icon} w={iconW} h={iconH} />}
+        <span>{text}</span>
       </ButtonStyled>
     );
   }
