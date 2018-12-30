@@ -5,10 +5,11 @@ export type ItemElement = Element<typeof FlexItem>;
 
 export type Props = {
   children?: Node,
-  cols: number,
+  cols?: string,
   style: Object,
 };
 
 export type State = {
   children?: Array<ItemElement>,
+  colSpanList: ?Array<number>,
 };

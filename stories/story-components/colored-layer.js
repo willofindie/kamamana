@@ -10,7 +10,7 @@ type Props = {
 const Colored = jsx(
   'div',
   {
-    h: '100px',
+    mih: '100px',
     bxz: 'border-box',
     bxsh: '0 0 15px -8px rgba(0,0,0,0.1), 0 2px 5px rgba(0,0,0,0.2)',
     bdrs: '2px',
