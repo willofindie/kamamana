@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import CenterDecorator from '../story-components/center-decorator';
 
-import Button from 'components/button';
+import Button from '/components/button';
 
 const button = storiesOf('Buttons', module);
 

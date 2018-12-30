@@ -1,14 +1,21 @@
 {
   "name": "kamamana",
   "version": "0.0.1",
-  "description": "Custom Components, useful for my projects",
+  "description": "Higher Order Custom HTML React Components, useful for personal projects",
   "keywords": [
     "reactjs",
     "javascript",
-    "css",
-    "styled-components"
+    "css-in-js",
+    "components",
+    "styling",
+    "nano-css"
   ],
-  "main": "src/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "browser": "dist/index.umd.js",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
     "nano-css": "^3.5.0"
   },
@@ -38,6 +45,7 @@
     "flow-bin": "^0.89.0",
     "husky": "^1.2.1",
     "jest": "^23.6.0",
+    "npm-run-all": "^4.1.5",
     "prettier": "^1.15.3",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
@@ -45,7 +53,6 @@
     "rollup": "^0.68.1",
     "rollup-plugin-babel": "^4.1.0",
     "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-flow": "^1.1.1",
     "rollup-plugin-node-resolve": "^4.0.0",
     "rollup-plugin-size-snapshot": "^0.7.0",
     "rollup-plugin-uglify": "^6.0.0",
@@ -60,19 +67,20 @@
     "flow": "flow check",
     "test": "NODE_ENV=test jest",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "prebuild": "rimraf dist",
+    "prebuild": "rimraf dist .stats/*",
     "build": "rollup -c",
+    "prepublish": "run-p flow lint test build",
     "analyze": "NODE_ANALYZE=1 rollup -c"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/willofindie/kamamana.git"
   },
-  "author": "Subroto Biswas",
+  "author": "Subroto Biswas <shub1493biswas@gmail.com>",
   "license": "MIT",
   "husky": {
     "hooks": {
-      "pre-commit": "npm run flow && npm run lint && npm run test"
+      "pre-commit": "run-p flow lint test"
     },
     "jest": {
       "verbose": true,

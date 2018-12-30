@@ -30,7 +30,7 @@ module.exports = mode => {
                 '@babel/preset-react',
               ],
               plugins: [
-                ['@babel/proposal-class-properties', { loose: true }],
+                ['@babel/plugin-proposal-class-properties', { loose: true }],
                 ['@babel/plugin-proposal-object-rest-spread', { loose: true }],
               ],
             },
@@ -42,8 +42,8 @@ module.exports = mode => {
       modules: [path.resolve('./'), 'node_modules'],
       extensions: ['.js', '.jsx'],
       alias: {
-        react: path.resolve('../node_modules/react'),
-        'react-dom': path.resolve('../node_modules/react-dom'),
+        react: path.resolve('./node_modules/react'),
+        'react-dom': path.resolve('./node_modules/react-dom'),
         kamamana: path.resolve('../dist/index.min'),
       },
     },

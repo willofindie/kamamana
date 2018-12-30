@@ -3,10 +3,10 @@ import { storiesOf } from '@storybook/react';
 import CenterDecorator from '../story-components/center-decorator';
 import ColoredLayer from '../story-components/colored-layer';
 
-import Flexbox from 'components/flexbox';
-import FlexItem from 'components/flexbox/flex-item-styled';
-import Card from 'components/card';
-import CardContent from 'components/card/content';
+import Flexbox from '/components/flexbox';
+import FlexItem from '/components/flexbox/flex-item-styled';
+import Card from '/components/card';
+import CardContent from '/components/card/content';
 
 const flexbox = storiesOf('Flexbox', module);
 

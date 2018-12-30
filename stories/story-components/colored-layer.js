@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Node } from 'react';
-import { jsx } from 'src/nano';
+import { jsx } from '/src/nano';
 
 type Props = {
   children: Node,

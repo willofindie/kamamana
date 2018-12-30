@@ -1,4 +1,4 @@
-import { jsx } from 'src/nano';
+import { jsx } from '/src/nano';
 
 const Container = jsx(
   'div',

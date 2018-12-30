@@ -1,4 +1,4 @@
-import { isString, isNumber, isEmpty, isArray, isObject } from 'utils/validators';
+import { isString, isNumber, isEmpty, isArray, isObject } from '/utils/validators';
 
 it('validates string properly, isString(string)', () => {
   expect(isString('foo')).toBeTruthy();

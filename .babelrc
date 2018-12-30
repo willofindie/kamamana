@@ -10,9 +10,9 @@
       "module-resolver",
       {
         "alias": {
-          "^src/(.*)": "./src/\\1",
-          "^components/(.*)": "./src/components/\\1",
-          "^utils/(.*)": "./src/utils/\\1"
+          "^/src/(.*)": "./src/\\1",
+          "^/components/(.*)": "./src/components/\\1",
+          "^/utils/(.*)": "./src/utils/\\1"
         }
       }
     ]

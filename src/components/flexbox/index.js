@@ -21,6 +21,8 @@ export default class Flexbox extends React.PureComponent<Props, State> {
     };
   }
 
+  // This method helps in wrapping flex items inside <FlexItemStyled /> if already not inside it.
+  // Helps in removing extra code for <FlexItemStyled /> Wrappers...
   prefix = (props: Props, colSpanList: ?Array<number>): Array<ItemElement> => {
     const childCount = React.Children.count(props.children);
     let total, colCount;

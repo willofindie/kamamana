@@ -1,5 +1,5 @@
 import React from 'react';
-import { jsx } from 'src/nano';
+import { jsx } from '/src/nano';
 
 import type { Node, Element } from 'react';
 

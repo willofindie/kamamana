@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import ButtonStyled from './button-styled';
-import Icon from 'src/icons';
-import defaultTheme from 'src/theme';
-import { darken, isDark, hexToRgb, rgbToHex } from 'utils/colors';
-import filterKeys from 'utils/filterKeys';
+import Icon from '/src/icons';
+import defaultTheme from '/src/theme';
+import { darken, isDark, hexToRgb, rgbToHex } from '/utils/colors';
+import filterKeys from '/utils/filterKeys';
 
 // Import Types
-import type { Color } from 'utils/colors';
+import type { Color } from '/utils/colors';
 import type { Props, State, Theme } from './index.d';
 
 export default class Button extends Component<Props, State> {

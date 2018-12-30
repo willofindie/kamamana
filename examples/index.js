@@ -1,9 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Button } from 'kamamana';
+import { Flexbox } from 'kamamana';
+
+import Center from './demos/components/centered';
+import ButtonDemo from './demos/button-demo';
 
 import './styles.css';
 
-const rootDOM = document.getElementById('root');
+const App = props => {
+  return (
+    <Center>
+      <Flexbox style={{ w: 900, fxd: 'column' }}>
+        <ButtonDemo />
+      </Flexbox>
+    </Center>
+  );
+};
 
-rootDOM && ReactDOM.render(<Button text='Click Me' />, rootDOM);
+const rootDOM = document.getElementById('root');
+rootDOM && ReactDOM.render(<App />, rootDOM);

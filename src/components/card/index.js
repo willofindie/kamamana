@@ -1,5 +1,5 @@
 import React from 'react';
-import defaultTheme from 'src/theme';
+import defaultTheme from '/src/theme';
 import CardStyled from './card-styled';
 import CardTitle from './title';
 import CardContent from './content';
@@ -25,9 +25,10 @@ export default class Card extends React.PureComponent<Props, State> {
     return this.props.content || this.state.content;
   }
 
-  // This method will help to fetch children, with or without card title and other elements
-  // Render Card Title and others into there respective components, while accepting all other Children
-  // as Card's Content, with or without the use of <CardContent />
+  // Helps in filtering <CardTitle /> Children into `title`, and all other unknown childrens
+  // Wrapped with <CardContent /> or not, are filtered into `content`.
+  // User should eaither use <CardContent /> explicitly for each children as a wrapper, or should
+  // not use at all. If not sone so, unexpected results might come.
   getAcceptedChildren = ({ children }: Props): AcceptedChildren => {
     const childArray = React.Children.toArray(children);
     const acceptedChilds = childArray.reduce(
