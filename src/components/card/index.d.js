@@ -7,6 +7,7 @@ export type ContentElement = Element<typeof Content>;
 export type Props = {
   title?: TitleElement,
   content?: ContentElement,
+  style: Object,
   children?: Node,
 };
 

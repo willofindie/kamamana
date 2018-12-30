@@ -6,6 +6,7 @@ import type { Node } from 'react';
 export type Props = {
   children?: Node,
   className: string,
+  style?: Object,
 };
 
 export default class CardContent extends React.Component<Props> {
@@ -14,7 +15,11 @@ export default class CardContent extends React.Component<Props> {
   };
 
   render() {
-    const { className } = this.props;
-    return <CardContentStyled className={className}>{this.props.children}</CardContentStyled>;
+    const { className, style } = this.props;
+    return (
+      <CardContentStyled css={style} className={className}>
+        {this.props.children}
+      </CardContentStyled>
+    );
   }
 }
