@@ -1,14 +1,18 @@
 {
   "name": "kamamana",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Higher Order Custom HTML React Components, useful for personal projects",
   "keywords": [
     "reactjs",
+    "react",
     "javascript",
     "css-in-js",
     "components",
-    "styling",
-    "nano-css"
+    "design",
+    "component",
+    "ui",
+    "framework",
+    "frontend"
   ],
   "main": "dist/index.cjs.js",
   "module": "dist/index.js",
