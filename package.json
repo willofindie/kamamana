@@ -55,6 +55,7 @@
     "react-dom": "^16.7.0",
     "rimraf": "^2.6.2",
     "rollup": "^0.68.1",
+    "rollup-plugin-analyzer": "^2.1.0",
     "rollup-plugin-babel": "^4.1.0",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-node-resolve": "^4.0.0",
@@ -72,7 +73,7 @@
     "test": "NODE_ENV=test jest",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "prebuild": "rimraf dist .stats/*",
-    "build": "rollup -c",
+    "build": "rollup -c --environment NODE_ENV:production",
     "prepublish": "run-p flow lint test build",
     "analyze": "NODE_ANALYZE=1 rollup -c"
   },

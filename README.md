@@ -1,7 +1,7 @@
 # Kamamana - Designed ReactJS Components
 
 [![npm version](https://badge.fury.io/js/kamamana.svg)](https://www.npmjs.com/package/kamamana)
-[![install size](https://packagephobia.now.sh/badge?p=kamamana)](https://packagephobia.now.sh/result?p=kamamana)
+[![install size](https://badgen.net/bundlephobia/minzip/kamamana@latest)](https://bundlephobia.com/result?p=kamamana)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
 [![linting: eslint](https://img.shields.io/badge/linting-eslint-463fd4.svg?style=flat)](https://github.com/eslint/eslint)
 [![type-check: flow](https://img.shields.io/badge/type--check-flow-E8BD36.svg?style=flat)](https://github.com/facebook/flow/)

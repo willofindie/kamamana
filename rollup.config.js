@@ -5,6 +5,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import { uglify } from 'rollup-plugin-uglify';
 import { sizeSnapshot } from 'rollup-plugin-size-snapshot';
+import { plugin as analyze } from 'rollup-plugin-analyzer';
 import visualizer from 'rollup-plugin-visualizer';
 
 /*
@@ -59,7 +60,8 @@ const getPlugins = type => {
           filename: './.stats/visualizer-stats.html',
           title: `Kamamana v-${pkg.version}`,
         }),
-        uglify()
+        uglify(),
+        analyze()
       );
       break;
   }
