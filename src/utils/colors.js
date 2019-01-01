@@ -111,6 +111,11 @@ export const isDark = (color: ?Color) => {
   return false;
 };
 
+export const isDarkHex = compose(
+  hexToRgb,
+  isDark
+);
+
 export const darkenHexToAmount = (amount: number) =>
   compose(
     hexToRgb,

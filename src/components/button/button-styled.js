@@ -1,5 +1,3 @@
-import defaultTheme from '/src/theme';
-
 import { jsx } from '/src/nano';
 
 // Static Styles goes here, dynamic props need to be used by child-component
@@ -19,12 +17,6 @@ const Button = jsx(
     '&:focus': {
       ol: 'none',
     },
-    '&[disabled], &.disabled': {
-      cur: 'not-allowed',
-      bgc: defaultTheme.light.disabled,
-      c: defaultTheme.light.disabledFg,
-      bd: `1px solid ${defaultTheme.light.disabledFg}`,
-    },
     '& .btn-icon': {
       mr: 8,
     },
@@ -39,3 +31,10 @@ const Button = jsx(
 );
 
 export default Button;
+
+export const disabledCSS = (context: Object) => ({
+  cur: 'not-allowed',
+  bgc: context.light.disabled,
+  c: context.light.disabledFg,
+  bd: `1px solid ${context.light.disabledFg}`,
+});

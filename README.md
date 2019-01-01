@@ -6,6 +6,8 @@
 [![linting: eslint](https://img.shields.io/badge/linting-eslint-463fd4.svg?style=flat)](https://github.com/eslint/eslint)
 [![type-check: flow](https://img.shields.io/badge/type--check-flow-E8BD36.svg?style=flat)](https://github.com/facebook/flow/)
 
+### :warning: PLEASE WAIT TILL v1.0.0, Till then I might be breaking stuffs here and there to make things right.
+
 > Designed ReactJS Components for personal use.
 
 Set of High-Order HTML Elements as React Components, with default theme set for them, which can also be customized to any extent required, keeping the bundle size for the project using this library small.
@@ -52,7 +54,7 @@ import { Button, Card, Flexbox } from 'kamamana';
 
 This library also exposes the internal `nano-css` css-in-js engine
 (only used `addons` and `nano`, for now it's just `jsx`, `rule`), for custom use, which helps in re-using the
-library, whitout any custom `css-in-js` dependency required for parent project
+library, whitout any custom `css-in-js` dependency, making overall parent project bundle size small (if used)...
 
 ```js
 import { nano, rule, jsx } from 'kamamana';

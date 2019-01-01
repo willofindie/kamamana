@@ -1,11 +1,11 @@
 import type { Node } from 'react';
 
 export type Props = {
-  theme?: any,
-  style?: any,
+  style: Object,
   // Styles specific Props
-  bgHoverC?: string, // Background Hover Color
-  fgHoverC?: string, // Text Hover Color
+  bgcHover?: string, // Background Hover Color
+  fgcHover?: string, // Text Hover Color
+  bdcHover?: string, // Text Hover Color
 
   type?: 'bordered' | 'ghost',
   block?: boolean,
@@ -21,6 +21,9 @@ export type Props = {
 };
 
 export type Theme = {
+  light: Object,
+  fadedWhite: string,
+  fadedBlack: string,
   fz?: string | number,
   bgc?: string,
   c?: string,
