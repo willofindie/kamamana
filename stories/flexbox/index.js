@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import Context from '../story-components/context-decorator';
 import CenterDecorator from '../story-components/center-decorator';
 import ColoredLayer from '../story-components/colored-layer';
 
@@ -10,6 +11,7 @@ import CardContent from '/components/card/content';
 
 const flexbox = storiesOf('Flexbox', module);
 
+flexbox.addDecorator(Context);
 flexbox.addDecorator(CenterDecorator);
 flexbox.add('2 Columns, without gutters', () => (
   <Flexbox cols='1:1'>
@@ -37,12 +39,24 @@ flexbox.add('2X2 Grid, custom gutters', () => (
         Lorem eu in cupidatat occaecat occaecat et ea in dolor tempor eu ut exercitation.
       </Card>
     </Flexbox>
-    <Flexbox cols='1:1' style={{ mt: 15 }}>
+    <Flexbox cols='3:3:6' style={{ mt: 15 }}>
       <Card style={{ c: '#fafafa', bgc: '#9E9D24' }}>
         Lorem eu in cupidatat occaecat occaecat et ea in dolor tempor eu ut exercitation.
       </Card>
       <Card style={{ c: '#fafafa', bgc: '#388E3C' }} itemStyle={{ ml: 15 }}>
         Consequat eiusmod laborum officia consequat minim amet esse irure aliqua elit nulla.
+      </Card>
+      <Card style={{ c: '#fafafa', bgc: '#8D6E63' }} itemStyle={{ ml: 15 }}>
+        Magna in magna non exercitation anim sint eiusmod duis magna adipisicing consectetur aute
+        sint. Quis eu non laborum commodo commodo ea esse nostrud. Quis officia aliqua veniam dolor
+        in proident Lorem aliquip voluptate excepteur id in tempor occaecat. Incididunt deserunt
+        anim ea amet cillum enim deserunt in voluptate eiusmod ipsum commodo cupidatat dolor. Cillum
+        ullamco laboris nulla aliqua sint proident voluptate id anim ullamco elit esse consequat
+        esse. Veniam pariatur laboris et nisi commodo. Commodo et dolor commodo occaecat aliqua
+        excepteur consectetur elit aute. Tempor irure dolore eu officia mollit officia. Ut non
+        occaecat laboris anim amet cupidatat. Cillum consequat aliqua proident esse veniam ipsum est
+        incididunt incididunt ipsum. Duis id et laboris non. Ad eiusmod aliqua reprehenderit Lorem
+        et incididunt in non. Esse ad ad enim aliqua dolor pariatur minim aute minim nulla ipsum.
       </Card>
     </Flexbox>
   </Flexbox>

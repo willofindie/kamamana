@@ -40,7 +40,6 @@ const WrapperStyled = (props: Props): Element<typeof WrapperJSX> => {
     css.p = 2;
     css.bdrs = 2;
   }
-  console.log(css);
   return (
     <WrapperJSX className={props.className} css={css}>
       {props.children}

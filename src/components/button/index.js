@@ -103,7 +103,6 @@ export default class Button extends Component<Props, State> {
     return (
       <KamamanaConsumer>
         {context => {
-          console.log('Inside Render', this.context);
           return (
             <ButtonStyled
               css={this.getCSS(custom.type, context)}

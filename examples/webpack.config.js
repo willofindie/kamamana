@@ -32,6 +32,7 @@ module.exports = mode => {
               plugins: [
                 ['@babel/plugin-proposal-class-properties', { loose: true }],
                 ['@babel/plugin-proposal-object-rest-spread', { loose: true }],
+                '@babel/plugin-syntax-dynamic-import',
               ],
             },
           },
@@ -44,7 +45,7 @@ module.exports = mode => {
       alias: {
         react: path.resolve('./node_modules/react'),
         'react-dom': path.resolve('./node_modules/react-dom'),
-        kamamana: path.resolve('../dist/index.min'),
+        kamamana: path.resolve('../dist/index.umd'),
       },
     },
     plugins: [

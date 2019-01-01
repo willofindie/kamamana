@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Flexbox } from 'kamamana';
+import { Flexbox, KamamanaProvider } from 'kamamana';
 
 import Center from './demos/components/centered';
 import ButtonDemo from './demos/button-demo';

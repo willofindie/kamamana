@@ -6,7 +6,7 @@
 [![linting: eslint](https://img.shields.io/badge/linting-eslint-463fd4.svg?style=flat)](https://github.com/eslint/eslint)
 [![type-check: flow](https://img.shields.io/badge/type--check-flow-E8BD36.svg?style=flat)](https://github.com/facebook/flow/)
 
-### :warning: PLEASE WAIT TILL v1.0.0, Till then I might be breaking stuffs here and there to make things right.
+> ### :warning: PLEASE WAIT TILL v1.0.0, Till then I might be breaking stuffs here and there to make things right.
 
 > Designed ReactJS Components for personal use.
 
@@ -48,8 +48,18 @@ npm install kamamana --save
 
 ## 🔨 Usage
 
-```js
-import { Button, Card, Flexbox } from 'kamamana';
+```jsx
+import { Button, Card, Flexbox, KamamanaProvider } from 'kamamana';
+
+/* ... */
+
+// Wrap your React App with KamamanaProvider for custom theme
+const App = props => <KamamanaProvider kTheme={theme}>{/* App Children */}</KamamanaProvider>;
+
+// Else, Use App as is, to use the default theme...
+const App = props => {
+  /* App Render */
+};
 ```
 
 This library also exposes the internal `nano-css` css-in-js engine
