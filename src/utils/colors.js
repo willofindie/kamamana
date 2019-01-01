@@ -1,3 +1,4 @@
+import compose from './compose';
 // Help taken from - https://stackoverflow.com/a/5624139/2849127
 
 export type Color = { r: number, g: number, b: number, a?: number };
@@ -109,3 +110,10 @@ export const isDark = (color: ?Color) => {
   }
   return false;
 };
+
+export const darkenHexToAmount = (amount: number) =>
+  compose(
+    hexToRgb,
+    rgbColor => darken(rgbColor, amount),
+    rgbToHex
+  );

@@ -127,6 +127,13 @@ it('should lighten the color', () => {
 
 it('should darken the color', () => {
   const { darken } = colors;
-  const color = { r: 12, g: 24, b: 250 };
+  const color = { r: 12, g: 24, b: 250 }; // hex format: '#0c18fa'
   expect(darken(color, 24)).toEqual({ r: 0, g: 0, b: 189 });
+});
+
+it('should darken the color, from hex format and return a hex formatted color string', () => {
+  const { darkenHexToAmount } = colors;
+  const color = '#0c18fa';
+  const darkenHexBy24 = darkenHexToAmount(24);
+  expect(darkenHexBy24(color)).toEqual('#0000bd');
 });
