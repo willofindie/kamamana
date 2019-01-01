@@ -119,9 +119,16 @@ describe('tests for color to be dark', () => {
   });
 });
 
+describe('tests for color to be dark', () => {
+  const { isDarkHex } = colors;
+  it('should pass for valid input', () => {
+    expect(isDarkHex('#333')).toBeTruthy();
+  });
+});
+
 it('should lighten the color', () => {
   const { lighten } = colors;
-  const color = { r: 12, g: 24, b: 250 };
+  const color = { r: 12, g: 24, b: 250 }; // hex format: '#0c18fa'
   expect(lighten(color, 10)).toEqual({ r: 38, g: 50, b: 255 });
 });
 
@@ -129,6 +136,13 @@ it('should darken the color', () => {
   const { darken } = colors;
   const color = { r: 12, g: 24, b: 250 }; // hex format: '#0c18fa'
   expect(darken(color, 24)).toEqual({ r: 0, g: 0, b: 189 });
+});
+
+it('should darken the color, from hex format and return a hex formatted color string', () => {
+  const { lightenHexToAmount } = colors;
+  const color = '#0c18fa';
+  const lightenHexBy10 = lightenHexToAmount(10);
+  expect(lightenHexBy10(color)).toEqual('#2632ff');
 });
 
 it('should darken the color, from hex format and return a hex formatted color string', () => {

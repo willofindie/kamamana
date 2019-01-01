@@ -1,4 +1,5 @@
 import React from 'react';
+import { KamamanaConsumer } from '/src/context';
 import CardTitleStyled from './car-title-styled';
 
 import type { Node } from 'react';
@@ -14,12 +15,23 @@ export default class CardTitle extends React.Component<Props> {
     className: 'title',
   };
 
+  getCSS = (context: Object) => {
+    return {
+      c: context.fadedBlack,
+      ...this.props.style,
+    };
+  };
+
   render() {
     const { className, style } = this.props;
     return (
-      <CardTitleStyled css={style} className={className}>
-        {this.props.children}
-      </CardTitleStyled>
+      <KamamanaConsumer>
+        {context => (
+          <CardTitleStyled css={this.getCSS(context)} className={className}>
+            {this.props.children}
+          </CardTitleStyled>
+        )}
+      </KamamanaConsumer>
     );
   }
 }

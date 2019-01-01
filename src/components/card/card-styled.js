@@ -6,7 +6,6 @@ import { jsx } from '/src/nano';
 const CardStyled = jsx(
   'div',
   {
-    bgc: defaultTheme.fadedWhite,
     bxz: 'border-box',
     bdrs: '2px',
     fz: '16px',

@@ -116,6 +116,13 @@ export const isDarkHex = compose(
   isDark
 );
 
+export const lightenHexToAmount = (amount: number) =>
+  compose(
+    hexToRgb,
+    rgbColor => lighten(rgbColor, amount),
+    rgbToHex
+  );
+
 export const darkenHexToAmount = (amount: number) =>
   compose(
     hexToRgb,
