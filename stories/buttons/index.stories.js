@@ -1,14 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Context from '../story-components/context-decorator';
-import CenterDecorator from '../story-components/center-decorator';
 
 import Button from '/components/button';
 
 const button = storiesOf('Buttons', module);
 
-button.addDecorator(CenterDecorator);
-button.addDecorator(Context);
 button.add('default', () => <Button text='Click Me' />);
 button.add('bordered', () => <Button type='bordered' text='Click Me' />);
 button.add('ghost', () => (

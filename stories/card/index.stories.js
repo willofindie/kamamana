@@ -1,16 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Context from '../story-components/context-decorator';
-import CenterDecorator from '../story-components/center-decorator';
-
 import Card from '/components/card';
 import CardContent from '/components/card/content';
 import CardTitle from '/components/card/title';
 
 const card = storiesOf('Cards', module);
 
-card.addDecorator(Context);
-card.addDecorator(CenterDecorator);
 card.add('default', () => (
   <Card title={<CardTitle>Lorem Ipsum Doler</CardTitle>}>
     {`

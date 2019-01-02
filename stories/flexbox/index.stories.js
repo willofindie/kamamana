@@ -1,7 +1,5 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Context from '../story-components/context-decorator';
-import CenterDecorator from '../story-components/center-decorator';
 import ColoredLayer from '../story-components/colored-layer';
 
 import Flexbox from '/components/flexbox';
@@ -11,8 +9,6 @@ import CardContent from '/components/card/content';
 
 const flexbox = storiesOf('Flexbox', module);
 
-flexbox.addDecorator(Context);
-flexbox.addDecorator(CenterDecorator);
 flexbox.add('2 Columns, without gutters', () => (
   <Flexbox cols='1:1'>
     <Card style={{ c: '#fafafa', bgc: '#388E3C' }}>

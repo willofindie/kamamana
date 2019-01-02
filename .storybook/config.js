@@ -1,11 +1,25 @@
 import { configure, addDecorator } from '@storybook/react';
 import { withOptions } from '@storybook/addon-options';
+import { withInfo } from '@storybook/addon-info';
 import { themes } from '@storybook/components';
+import stylesheet from './stylesheet-info';
+
+import Context from './global-decorators/context-decorator';
+import CenterDecorator from './global-decorators/center-decorator';
+
+addDecorator(
+  withInfo({
+    styles: stylesheet,
+  })
+);
+
+addDecorator(CenterDecorator);
+addDecorator(Context);
 
 addDecorator(
   withOptions({
     name: 'Kamamana',
-    url: 'http://shub1427.github.io',
+    url: 'https://github.com/willofindie/kamamana/',
     goFullScreen: false,
     showSearchBox: false,
     addonPanelInRight: true,
