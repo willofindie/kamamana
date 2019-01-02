@@ -12,10 +12,13 @@ addDecorator(
   })
 );
 
+const req = require.context('../stories', true, /\.stories\.js$/);
+
 function loadStories() {
-  require('../stories/buttons');
-  require('../stories/card');
-  require('../stories/flexbox');
+  req.keys().forEach(filename => req(filename));
+  // Not sure why, but dynamic imports are not working properly with auto
+  // loading of story Modules
+  require('../stories/buttons/icon.dynamic');
 }
 
 configure(loadStories, module);
