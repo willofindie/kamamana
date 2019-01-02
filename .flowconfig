@@ -3,19 +3,23 @@
 .*/node_modules/.*
 .*/.storybook/.*
 .*/.jest/.*
+.*/.out/.*
 .*/__tests__/.*
 .*/temp/.*
 .*/rollup.config.js
 .*/examples/.*
+.*/src/__image_snapshots__/.*
+.*/stories/.*/__snapshots__/.*
 
 [include]
-.*/src/.*
+.*/src/*.js
 
 [libs]
 flow-typed/npm/nano-css_vx.x.x.js
 flow-typed/npm/jest_v23.x.x.js
 flow-typed/npm/@storybook/react_v4.x.x.js
 flow-typed/npm/@storybook/addon-storyshots_vx.x.x.js
+flow-typed/npm/@storybook/addon-storyshots-puppeteer_vx.x.x.js
 
 [lints]
 
