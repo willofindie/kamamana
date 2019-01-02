@@ -1,0 +1,1786 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Cards custom styles 1`] = `
+<div
+  className=" kamamana-CenterWrapper"
+>
+  <svg
+    className="story-grid-pallete"
+    height="100%"
+    width="100%"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <pattern
+        height="8"
+        id="smallGrid"
+        patternUnits="userSpaceOnUse"
+        width="8"
+      >
+        <path
+          d="M 8 0 L 0 0 0 8"
+          fill="none"
+          stroke="#ECEFF1"
+          strokeWidth="0.5"
+        />
+      </pattern>
+      <pattern
+        height="80"
+        id="grid"
+        patternUnits="userSpaceOnUse"
+        width="80"
+      >
+        <rect
+          fill="url(#smallGrid)"
+          height="80"
+          width="80"
+        />
+        <path
+          d="M 80 0 L 0 0 0 80"
+          fill="none"
+          stroke="#E0E0E0"
+          strokeWidth="1"
+        />
+      </pattern>
+    </defs>
+    <rect
+      fill="url(#grid)"
+      height="100%"
+      width="100%"
+    />
+  </svg>
+  <div>
+    <div
+      style={
+        Object {
+          "position": "relative",
+          "zIndex": 0,
+        }
+      }
+    >
+      <div
+        className=" kamamana-CardStyled kamamana-_89lt21"
+      >
+        <div
+          className="title kamamana-CardTitleStyled kamamana-_tas9q"
+        >
+          Lorem Ipsum Doler
+        </div>
+        <div
+          className="content kamamana-CardContentStyled kamamana-_vn4hbx"
+        >
+          <p>
+            Eu sint anim ex adipisicing magna proident proident exercitation non mollit et. Reprehenderit cupidatat est qui ut ipsum proident sunt non eiusmod. Voluptate esse pariatur dolor fugiat pariatur reprehenderit irure consequat. Laboris exercitation tempor dolore dolor dolore. In non officia velit nostrud nostrud.
+          </p>
+          <p>
+            Commodo tempor eiusmod adipisicing ipsum dolor exercitation aliqua amet exercitation non. Aliqua do nisi ad sint veniam dolor nostrud irure sit cupidatat. Minim anim velit qui elit excepteur nulla culpa Lorem. Aliqua velit eu ut consectetur exercitation dolore ea nostrud consequat. Aliqua consequat eiusmod pariatur mollit dolor amet ipsum elit laborum magna cillum culpa ex tempor.
+          </p>
+        </div>
+      </div>
+    </div>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "#28c",
+          "border": "none",
+          "borderRadius": "0 0 0 5px",
+          "color": "#fff",
+          "cursor": "pointer",
+          "display": "block",
+          "fontFamily": "sans-serif",
+          "fontSize": "12px",
+          "padding": "5px 15px",
+          "position": "fixed",
+          "right": 0,
+          "top": 0,
+        }
+      }
+      type="button"
+    >
+      Show Info
+    </button>
+    <div
+      style={
+        Object {
+          "background": "white",
+          "bottom": 0,
+          "display": "none",
+          "left": 0,
+          "overflow": "auto",
+          "padding": "0 40px",
+          "position": "fixed",
+          "right": 0,
+          "top": 0,
+          "zIndex": 99999,
+        }
+      }
+    >
+      <button
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "#28c",
+            "border": "none",
+            "borderRadius": "0 0 0 5px",
+            "color": "#fff",
+            "cursor": "pointer",
+            "display": "block",
+            "fontFamily": "sans-serif",
+            "fontSize": "12px",
+            "padding": "5px 15px",
+            "position": "fixed",
+            "right": 0,
+            "top": 0,
+          }
+        }
+        type="button"
+      >
+        ×
+      </button>
+      <div>
+        <div
+          style={
+            Object {
+              "WebkitFontSmoothing": "antialiased",
+              "backgroundColor": "#fff",
+              "border": "1px solid #eee",
+              "borderRadius": "2px",
+              "color": "#444",
+              "fontFamily": "-apple-system, \\".SFNSText-Regular\\", \\"San Francisco\\", BlinkMacSystemFont, \\"Segoe UI\\", \\"Roboto\\", \\"Oxygen\\", \\"Ubuntu\\", \\"Cantarell\\", \\"Fira Sans\\", \\"Droid Sans\\", \\"Helvetica Neue\\", \\"Lucida Grande\\", \\"Arial\\", sans-serif",
+              "fontSize": "15px",
+              "fontWeight": 300,
+              "lineHeight": 1.45,
+              "marginBottom": "20px",
+              "marginTop": "20px",
+              "padding": "20px 40px 40px",
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "borderBottom": "1px solid #eee",
+                "marginBottom": 10,
+                "paddingTop": 10,
+              }
+            }
+          >
+            <h1
+              style={
+                Object {
+                  "fontSize": "35px",
+                  "margin": 0,
+                  "padding": 0,
+                }
+              }
+            >
+              Cards
+            </h1>
+            <h2
+              style={
+                Object {
+                  "fontSize": "22px",
+                  "fontWeight": 400,
+                  "margin": "0 0 10px 0",
+                  "padding": 0,
+                }
+              }
+            >
+              custom styles
+            </h2>
+          </div>
+          
+          <div>
+            <h1
+              style={
+                Object {
+                  "borderBottom": "1px solid #EEE",
+                  "fontSize": "25px",
+                  "margin": "20px 0 0 0",
+                  "padding": "0 0 5px 0",
+                }
+              }
+            >
+              Story Source
+            </h1>
+            <pre
+              className="css-r8d96o eyvlbql0"
+            >
+              <div>
+                <div>
+                  <div
+                    style={
+                      Object {
+                        "paddingLeft": 18,
+                        "paddingRight": 3,
+                      }
+                    }
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#444",
+                        }
+                      }
+                    >
+                      &lt;
+                      Card
+                    </span>
+                    <span>
+                      <span>
+                         
+                        <span
+                          style={Object {}}
+                        >
+                          style
+                        </span>
+                        <span>
+                          =
+                          <span
+                            style={Object {}}
+                          >
+                            {
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              {
+                              <span>
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#666",
+                                    }
+                                  }
+                                >
+                                  bgc
+                                </span>
+                              </span>
+                              : 
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#22a",
+                                    "wordBreak": "break-word",
+                                  }
+                                }
+                              >
+                                '#B71C1C'
+                              </span>
+                              }
+                            </span>
+                            }
+                          </span>
+                        </span>
+                      </span>
+                      <span>
+                         
+                        <span
+                          style={Object {}}
+                        >
+                          title
+                        </span>
+                        <span>
+                          =
+                          <span
+                            style={Object {}}
+                          >
+                            {
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              &lt;CardTitle /&gt;
+                            </span>
+                            }
+                          </span>
+                        </span>
+                        
+                      </span>
+                    </span>
+                    <span
+                      style={
+                        Object {
+                          "color": "#444",
+                        }
+                      }
+                    >
+                      &gt;
+                    </span>
+                  </div>
+                  <div>
+                    <div
+                      style={
+                        Object {
+                          "paddingLeft": 33,
+                          "paddingRight": 3,
+                        }
+                      }
+                    >
+                      <span
+                        style={
+                          Object {
+                            "color": "#444",
+                          }
+                        }
+                      >
+                        &lt;
+                        CardContent
+                      </span>
+                      <span>
+                        <span>
+                           
+                          <span
+                            style={Object {}}
+                          >
+                            style
+                          </span>
+                          <span>
+                            =
+                            <span
+                              style={Object {}}
+                            >
+                              {
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                {
+                                <span>
+                                  <span
+                                    style={
+                                      Object {
+                                        "color": "#666",
+                                      }
+                                    }
+                                  >
+                                    c
+                                  </span>
+                                </span>
+                                : 
+                                <span
+                                  style={
+                                    Object {
+                                      "color": "#22a",
+                                      "wordBreak": "break-word",
+                                    }
+                                  }
+                                >
+                                  '#eaeaea'
+                                </span>
+                                }
+                              </span>
+                              }
+                            </span>
+                          </span>
+                          
+                        </span>
+                      </span>
+                      <span
+                        style={
+                          Object {
+                            "color": "#444",
+                          }
+                        }
+                      >
+                        &gt;
+                      </span>
+                    </div>
+                    <div>
+                      <div
+                        style={
+                          Object {
+                            "paddingLeft": 48,
+                            "paddingRight": 3,
+                          }
+                        }
+                      >
+                        <span
+                          style={
+                            Object {
+                              "color": "#444",
+                            }
+                          }
+                        >
+                          &lt;
+                          p
+                        </span>
+                        <span />
+                        <span
+                          style={
+                            Object {
+                              "color": "#444",
+                            }
+                          }
+                        >
+                          &gt;
+                        </span>
+                      </div>
+                      <div
+                        style={
+                          Object {
+                            "paddingLeft": 63,
+                            "paddingRight": 3,
+                          }
+                        }
+                      >
+                        <span
+                          style={
+                            Object {
+                              "color": "#444",
+                            }
+                          }
+                        >
+                          Eu sint anim ex adipisicing magna proident proident exercitation non mollit et. Reprehenderit cupidatat est qui ut ipsum proident sunt non eiusmod. Voluptate esse pariatur dolor fugiat pariatur reprehenderit irure consequat. Laboris exercitation tempor dolore dolor dolore. In non officia velit nostrud nostrud.
+                        </span>
+                      </div>
+                      <div
+                        style={
+                          Object {
+                            "paddingLeft": 48,
+                            "paddingRight": 3,
+                          }
+                        }
+                      >
+                        <span
+                          style={
+                            Object {
+                              "color": "#444",
+                            }
+                          }
+                        >
+                          &lt;/
+                          p
+                          &gt;
+                        </span>
+                      </div>
+                    </div>
+                    <div>
+                      <div
+                        style={
+                          Object {
+                            "paddingLeft": 48,
+                            "paddingRight": 3,
+                          }
+                        }
+                      >
+                        <span
+                          style={
+                            Object {
+                              "color": "#444",
+                            }
+                          }
+                        >
+                          &lt;
+                          p
+                        </span>
+                        <span />
+                        <span
+                          style={
+                            Object {
+                              "color": "#444",
+                            }
+                          }
+                        >
+                          &gt;
+                        </span>
+                      </div>
+                      <div
+                        style={
+                          Object {
+                            "paddingLeft": 63,
+                            "paddingRight": 3,
+                          }
+                        }
+                      >
+                        <span
+                          style={
+                            Object {
+                              "color": "#444",
+                            }
+                          }
+                        >
+                          Commodo tempor eiusmod adipisicing ipsum dolor exercitation aliqua amet exercitation non. Aliqua do nisi ad sint veniam dolor nostrud irure sit cupidatat. Minim anim velit qui elit excepteur nulla culpa Lorem. Aliqua velit eu ut consectetur exercitation dolore ea nostrud consequat. Aliqua consequat eiusmod pariatur mollit dolor amet ipsum elit laborum magna cillum culpa ex tempor.
+                        </span>
+                      </div>
+                      <div
+                        style={
+                          Object {
+                            "paddingLeft": 48,
+                            "paddingRight": 3,
+                          }
+                        }
+                      >
+                        <span
+                          style={
+                            Object {
+                              "color": "#444",
+                            }
+                          }
+                        >
+                          &lt;/
+                          p
+                          &gt;
+                        </span>
+                      </div>
+                    </div>
+                    <div
+                      style={
+                        Object {
+                          "paddingLeft": 33,
+                          "paddingRight": 3,
+                        }
+                      }
+                    >
+                      <span
+                        style={
+                          Object {
+                            "color": "#444",
+                          }
+                        }
+                      >
+                        &lt;/
+                        CardContent
+                        &gt;
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    style={
+                      Object {
+                        "paddingLeft": 18,
+                        "paddingRight": 3,
+                      }
+                    }
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#444",
+                        }
+                      }
+                    >
+                      &lt;/
+                      Card
+                      &gt;
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <button
+                className="css-1naocv3 eva467m0"
+                onClick={[Function]}
+              >
+                <div
+                  className="css-lvl6aa eva467m1"
+                >
+                  <div
+                    style={
+                      Object {
+                        "marginBottom": 6,
+                      }
+                    }
+                  >
+                    Copied!
+                  </div>
+                  <div>
+                    Copy
+                  </div>
+                </div>
+              </button>
+            </pre>
+          </div>
+          <div>
+            <h1
+              style={
+                Object {
+                  "borderBottom": "1px solid #EEE",
+                  "fontSize": "25px",
+                  "margin": "20px 0 0 0",
+                  "padding": "0 0 5px 0",
+                }
+              }
+            >
+              Prop Types
+            </h1>
+            <div>
+              <h2
+                style={
+                  Object {
+                    "margin": "20px 0 0 0",
+                  }
+                }
+              >
+                "
+                Card
+                " Component
+              </h2>
+              <table
+                className="css-1uhv8nx e1vdo5380"
+              >
+                <thead>
+                  <tr>
+                    <th
+                      className="css-11b5gui e6fp4ir1"
+                    >
+                      property
+                    </th>
+                    <th
+                      className="css-11b5gui e6fp4ir1"
+                    >
+                      propType
+                    </th>
+                    <th
+                      className="css-11b5gui e6fp4ir1"
+                    >
+                      required
+                    </th>
+                    <th
+                      className="css-11b5gui e6fp4ir1"
+                    >
+                      default
+                    </th>
+                    <th
+                      className="css-11b5gui e6fp4ir1"
+                    >
+                      description
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td
+                      className="css-1qcb1f7 e6fp4ir0"
+                    >
+                      style
+                    </td>
+                    <td
+                      className="css-1qcb1f7 e6fp4ir0"
+                    >
+                      <span>
+                        unknown
+                      </span>
+                    </td>
+                    <td
+                      className="css-11b5gui e6fp4ir0"
+                    >
+                      -
+                    </td>
+                    <td
+                      className="css-11b5gui e6fp4ir0"
+                    >
+                      <span
+                        style={
+                          Object {
+                            "color": "#666",
+                          }
+                        }
+                      >
+                        {
+                        }
+                      </span>
+                    </td>
+                    <td
+                      className="css-11b5gui e6fp4ir0"
+                    />
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div>
+              <h2
+                style={
+                  Object {
+                    "margin": "20px 0 0 0",
+                  }
+                }
+              >
+                "
+                CardContent
+                " Component
+              </h2>
+              <table
+                className="css-1uhv8nx e1vdo5380"
+              >
+                <thead>
+                  <tr>
+                    <th
+                      className="css-11b5gui e6fp4ir1"
+                    >
+                      property
+                    </th>
+                    <th
+                      className="css-11b5gui e6fp4ir1"
+                    >
+                      propType
+                    </th>
+                    <th
+                      className="css-11b5gui e6fp4ir1"
+                    >
+                      required
+                    </th>
+                    <th
+                      className="css-11b5gui e6fp4ir1"
+                    >
+                      default
+                    </th>
+                    <th
+                      className="css-11b5gui e6fp4ir1"
+                    >
+                      description
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td
+                      className="css-1qcb1f7 e6fp4ir0"
+                    >
+                      className
+                    </td>
+                    <td
+                      className="css-1qcb1f7 e6fp4ir0"
+                    >
+                      <span>
+                        unknown
+                      </span>
+                    </td>
+                    <td
+                      className="css-11b5gui e6fp4ir0"
+                    >
+                      -
+                    </td>
+                    <td
+                      className="css-11b5gui e6fp4ir0"
+                    >
+                      <span
+                        style={
+                          Object {
+                            "color": "#22a",
+                            "wordBreak": "break-word",
+                          }
+                        }
+                      >
+                        content
+                      </span>
+                    </td>
+                    <td
+                      className="css-11b5gui e6fp4ir0"
+                    />
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Cards default 1`] = `
+<div
+  className=" kamamana-CenterWrapper"
+>
+  <svg
+    className="story-grid-pallete"
+    height="100%"
+    width="100%"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <pattern
+        height="8"
+        id="smallGrid"
+        patternUnits="userSpaceOnUse"
+        width="8"
+      >
+        <path
+          d="M 8 0 L 0 0 0 8"
+          fill="none"
+          stroke="#ECEFF1"
+          strokeWidth="0.5"
+        />
+      </pattern>
+      <pattern
+        height="80"
+        id="grid"
+        patternUnits="userSpaceOnUse"
+        width="80"
+      >
+        <rect
+          fill="url(#smallGrid)"
+          height="80"
+          width="80"
+        />
+        <path
+          d="M 80 0 L 0 0 0 80"
+          fill="none"
+          stroke="#E0E0E0"
+          strokeWidth="1"
+        />
+      </pattern>
+    </defs>
+    <rect
+      fill="url(#grid)"
+      height="100%"
+      width="100%"
+    />
+  </svg>
+  <div>
+    <div
+      style={
+        Object {
+          "position": "relative",
+          "zIndex": 0,
+        }
+      }
+    >
+      <div
+        className=" kamamana-CardStyled kamamana-_uq5uaz"
+      >
+        <div
+          className="title kamamana-CardTitleStyled kamamana-_pnirtr"
+        >
+          Lorem Ipsum Doler
+        </div>
+        <div
+          className="content kamamana-CardContentStyled kamamana-_uq5uaz"
+        >
+          
+      I AM STRING (without &lt;CardContent /&gt;)
+      Eu sint anim ex adipisicing magna proident proident exercitation non mollit et. Reprehenderit
+      cupidatat est qui ut ipsum proident sunt non eiusmod. Voluptate esse pariatur dolor fugiat
+      pariatur reprehenderit irure consequat. Laboris exercitation tempor dolore dolor dolore. In non
+      officia velit nostrud nostrud.
+    
+        </div>
+      </div>
+    </div>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "#28c",
+          "border": "none",
+          "borderRadius": "0 0 0 5px",
+          "color": "#fff",
+          "cursor": "pointer",
+          "display": "block",
+          "fontFamily": "sans-serif",
+          "fontSize": "12px",
+          "padding": "5px 15px",
+          "position": "fixed",
+          "right": 0,
+          "top": 0,
+        }
+      }
+      type="button"
+    >
+      Show Info
+    </button>
+    <div
+      style={
+        Object {
+          "background": "white",
+          "bottom": 0,
+          "display": "none",
+          "left": 0,
+          "overflow": "auto",
+          "padding": "0 40px",
+          "position": "fixed",
+          "right": 0,
+          "top": 0,
+          "zIndex": 99999,
+        }
+      }
+    >
+      <button
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "#28c",
+            "border": "none",
+            "borderRadius": "0 0 0 5px",
+            "color": "#fff",
+            "cursor": "pointer",
+            "display": "block",
+            "fontFamily": "sans-serif",
+            "fontSize": "12px",
+            "padding": "5px 15px",
+            "position": "fixed",
+            "right": 0,
+            "top": 0,
+          }
+        }
+        type="button"
+      >
+        ×
+      </button>
+      <div>
+        <div
+          style={
+            Object {
+              "WebkitFontSmoothing": "antialiased",
+              "backgroundColor": "#fff",
+              "border": "1px solid #eee",
+              "borderRadius": "2px",
+              "color": "#444",
+              "fontFamily": "-apple-system, \\".SFNSText-Regular\\", \\"San Francisco\\", BlinkMacSystemFont, \\"Segoe UI\\", \\"Roboto\\", \\"Oxygen\\", \\"Ubuntu\\", \\"Cantarell\\", \\"Fira Sans\\", \\"Droid Sans\\", \\"Helvetica Neue\\", \\"Lucida Grande\\", \\"Arial\\", sans-serif",
+              "fontSize": "15px",
+              "fontWeight": 300,
+              "lineHeight": 1.45,
+              "marginBottom": "20px",
+              "marginTop": "20px",
+              "padding": "20px 40px 40px",
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "borderBottom": "1px solid #eee",
+                "marginBottom": 10,
+                "paddingTop": 10,
+              }
+            }
+          >
+            <h1
+              style={
+                Object {
+                  "fontSize": "35px",
+                  "margin": 0,
+                  "padding": 0,
+                }
+              }
+            >
+              Cards
+            </h1>
+            <h2
+              style={
+                Object {
+                  "fontSize": "22px",
+                  "fontWeight": 400,
+                  "margin": "0 0 10px 0",
+                  "padding": 0,
+                }
+              }
+            >
+              default
+            </h2>
+          </div>
+          
+          <div>
+            <h1
+              style={
+                Object {
+                  "borderBottom": "1px solid #EEE",
+                  "fontSize": "25px",
+                  "margin": "20px 0 0 0",
+                  "padding": "0 0 5px 0",
+                }
+              }
+            >
+              Story Source
+            </h1>
+            <pre
+              className="css-r8d96o eyvlbql0"
+            >
+              <div>
+                <div>
+                  <div
+                    style={
+                      Object {
+                        "paddingLeft": 18,
+                        "paddingRight": 3,
+                      }
+                    }
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#444",
+                        }
+                      }
+                    >
+                      &lt;
+                      Card
+                    </span>
+                    <span>
+                      <span>
+                         
+                        <span
+                          style={Object {}}
+                        >
+                          title
+                        </span>
+                        <span>
+                          =
+                          <span
+                            style={Object {}}
+                          >
+                            {
+                            <span
+                              style={
+                                Object {
+                                  "color": "#666",
+                                }
+                              }
+                            >
+                              &lt;CardTitle /&gt;
+                            </span>
+                            }
+                          </span>
+                        </span>
+                        
+                      </span>
+                    </span>
+                    <span
+                      style={
+                        Object {
+                          "color": "#444",
+                        }
+                      }
+                    >
+                      &gt;
+                    </span>
+                  </div>
+                  <div
+                    style={
+                      Object {
+                        "paddingLeft": 33,
+                        "paddingRight": 3,
+                      }
+                    }
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#444",
+                        }
+                      }
+                    >
+                      
+      I AM STRING (without &lt;CardContent /&gt;)
+      Eu sint anim ex adipisicing magna proident proident exercitation non mollit et. Reprehenderit
+      cupidatat est qui ut ipsum proident sunt non eiusmod. Voluptate esse pariatur dolor fugiat
+      pariatur reprehenderit irure consequat. Laboris exercitation tempor dolore dolor dolore. In non
+      officia velit nostrud nostrud.
+    
+                    </span>
+                  </div>
+                  <div
+                    style={
+                      Object {
+                        "paddingLeft": 18,
+                        "paddingRight": 3,
+                      }
+                    }
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#444",
+                        }
+                      }
+                    >
+                      &lt;/
+                      Card
+                      &gt;
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <button
+                className="css-1naocv3 eva467m0"
+                onClick={[Function]}
+              >
+                <div
+                  className="css-lvl6aa eva467m1"
+                >
+                  <div
+                    style={
+                      Object {
+                        "marginBottom": 6,
+                      }
+                    }
+                  >
+                    Copied!
+                  </div>
+                  <div>
+                    Copy
+                  </div>
+                </div>
+              </button>
+            </pre>
+          </div>
+          <div>
+            <h1
+              style={
+                Object {
+                  "borderBottom": "1px solid #EEE",
+                  "fontSize": "25px",
+                  "margin": "20px 0 0 0",
+                  "padding": "0 0 5px 0",
+                }
+              }
+            >
+              Prop Types
+            </h1>
+            <div>
+              <h2
+                style={
+                  Object {
+                    "margin": "20px 0 0 0",
+                  }
+                }
+              >
+                "
+                Card
+                " Component
+              </h2>
+              <table
+                className="css-1uhv8nx e1vdo5380"
+              >
+                <thead>
+                  <tr>
+                    <th
+                      className="css-11b5gui e6fp4ir1"
+                    >
+                      property
+                    </th>
+                    <th
+                      className="css-11b5gui e6fp4ir1"
+                    >
+                      propType
+                    </th>
+                    <th
+                      className="css-11b5gui e6fp4ir1"
+                    >
+                      required
+                    </th>
+                    <th
+                      className="css-11b5gui e6fp4ir1"
+                    >
+                      default
+                    </th>
+                    <th
+                      className="css-11b5gui e6fp4ir1"
+                    >
+                      description
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td
+                      className="css-1qcb1f7 e6fp4ir0"
+                    >
+                      style
+                    </td>
+                    <td
+                      className="css-1qcb1f7 e6fp4ir0"
+                    >
+                      <span>
+                        unknown
+                      </span>
+                    </td>
+                    <td
+                      className="css-11b5gui e6fp4ir0"
+                    >
+                      -
+                    </td>
+                    <td
+                      className="css-11b5gui e6fp4ir0"
+                    >
+                      <span
+                        style={
+                          Object {
+                            "color": "#666",
+                          }
+                        }
+                      >
+                        {
+                        }
+                      </span>
+                    </td>
+                    <td
+                      className="css-11b5gui e6fp4ir0"
+                    />
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Cards without any wrapper 1`] = `
+<div
+  className=" kamamana-CenterWrapper"
+>
+  <svg
+    className="story-grid-pallete"
+    height="100%"
+    width="100%"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <pattern
+        height="8"
+        id="smallGrid"
+        patternUnits="userSpaceOnUse"
+        width="8"
+      >
+        <path
+          d="M 8 0 L 0 0 0 8"
+          fill="none"
+          stroke="#ECEFF1"
+          strokeWidth="0.5"
+        />
+      </pattern>
+      <pattern
+        height="80"
+        id="grid"
+        patternUnits="userSpaceOnUse"
+        width="80"
+      >
+        <rect
+          fill="url(#smallGrid)"
+          height="80"
+          width="80"
+        />
+        <path
+          d="M 80 0 L 0 0 0 80"
+          fill="none"
+          stroke="#E0E0E0"
+          strokeWidth="1"
+        />
+      </pattern>
+    </defs>
+    <rect
+      fill="url(#grid)"
+      height="100%"
+      width="100%"
+    />
+  </svg>
+  <div>
+    <div
+      style={
+        Object {
+          "position": "relative",
+          "zIndex": 0,
+        }
+      }
+    >
+      <div
+        className=" kamamana-CardStyled kamamana-_uq5uaz"
+      >
+        <div
+          className="title kamamana-CardTitleStyled kamamana-_uq5uaz"
+        >
+          Lorem Ipsum Doler (without &lt;CardTitle /&gt;)
+        </div>
+        <div
+          className="content kamamana-CardContentStyled kamamana-_uq5uaz"
+        >
+          <p>
+            Eu sint anim ex adipisicing magna proident proident exercitation non mollit et. Reprehenderit cupidatat est qui ut ipsum proident sunt non eiusmod. Voluptate esse pariatur dolor fugiat pariatur reprehenderit irure consequat. Laboris exercitation tempor dolore dolor dolore. In non officia velit nostrud nostrud.
+          </p>
+          <p>
+            Commodo tempor eiusmod adipisicing ipsum dolor exercitation aliqua amet exercitation non. Aliqua do nisi ad sint veniam dolor nostrud irure sit cupidatat. Minim anim velit qui elit excepteur nulla culpa Lorem. Aliqua velit eu ut consectetur exercitation dolore ea nostrud consequat. Aliqua consequat eiusmod pariatur mollit dolor amet ipsum elit laborum magna cillum culpa ex tempor.
+          </p>
+        </div>
+      </div>
+    </div>
+    <button
+      onClick={[Function]}
+      style={
+        Object {
+          "background": "#28c",
+          "border": "none",
+          "borderRadius": "0 0 0 5px",
+          "color": "#fff",
+          "cursor": "pointer",
+          "display": "block",
+          "fontFamily": "sans-serif",
+          "fontSize": "12px",
+          "padding": "5px 15px",
+          "position": "fixed",
+          "right": 0,
+          "top": 0,
+        }
+      }
+      type="button"
+    >
+      Show Info
+    </button>
+    <div
+      style={
+        Object {
+          "background": "white",
+          "bottom": 0,
+          "display": "none",
+          "left": 0,
+          "overflow": "auto",
+          "padding": "0 40px",
+          "position": "fixed",
+          "right": 0,
+          "top": 0,
+          "zIndex": 99999,
+        }
+      }
+    >
+      <button
+        onClick={[Function]}
+        style={
+          Object {
+            "background": "#28c",
+            "border": "none",
+            "borderRadius": "0 0 0 5px",
+            "color": "#fff",
+            "cursor": "pointer",
+            "display": "block",
+            "fontFamily": "sans-serif",
+            "fontSize": "12px",
+            "padding": "5px 15px",
+            "position": "fixed",
+            "right": 0,
+            "top": 0,
+          }
+        }
+        type="button"
+      >
+        ×
+      </button>
+      <div>
+        <div
+          style={
+            Object {
+              "WebkitFontSmoothing": "antialiased",
+              "backgroundColor": "#fff",
+              "border": "1px solid #eee",
+              "borderRadius": "2px",
+              "color": "#444",
+              "fontFamily": "-apple-system, \\".SFNSText-Regular\\", \\"San Francisco\\", BlinkMacSystemFont, \\"Segoe UI\\", \\"Roboto\\", \\"Oxygen\\", \\"Ubuntu\\", \\"Cantarell\\", \\"Fira Sans\\", \\"Droid Sans\\", \\"Helvetica Neue\\", \\"Lucida Grande\\", \\"Arial\\", sans-serif",
+              "fontSize": "15px",
+              "fontWeight": 300,
+              "lineHeight": 1.45,
+              "marginBottom": "20px",
+              "marginTop": "20px",
+              "padding": "20px 40px 40px",
+            }
+          }
+        >
+          <div
+            style={
+              Object {
+                "borderBottom": "1px solid #eee",
+                "marginBottom": 10,
+                "paddingTop": 10,
+              }
+            }
+          >
+            <h1
+              style={
+                Object {
+                  "fontSize": "35px",
+                  "margin": 0,
+                  "padding": 0,
+                }
+              }
+            >
+              Cards
+            </h1>
+            <h2
+              style={
+                Object {
+                  "fontSize": "22px",
+                  "fontWeight": 400,
+                  "margin": "0 0 10px 0",
+                  "padding": 0,
+                }
+              }
+            >
+              without any wrapper
+            </h2>
+          </div>
+          
+          <div>
+            <h1
+              style={
+                Object {
+                  "borderBottom": "1px solid #EEE",
+                  "fontSize": "25px",
+                  "margin": "20px 0 0 0",
+                  "padding": "0 0 5px 0",
+                }
+              }
+            >
+              Story Source
+            </h1>
+            <pre
+              className="css-r8d96o eyvlbql0"
+            >
+              <div>
+                <div>
+                  <div
+                    style={
+                      Object {
+                        "paddingLeft": 18,
+                        "paddingRight": 3,
+                      }
+                    }
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#444",
+                        }
+                      }
+                    >
+                      &lt;
+                      Card
+                    </span>
+                    <span>
+                      <span>
+                         
+                        <span
+                          style={Object {}}
+                        >
+                          title
+                        </span>
+                        <span>
+                          =
+                          <span
+                            style={Object {}}
+                          >
+                            "
+                            <span
+                              style={
+                                Object {
+                                  "color": "#22a",
+                                  "wordBreak": "break-word",
+                                }
+                              }
+                            >
+                              Lorem Ipsum Doler (without &lt;CardTitle /&gt;)
+                            </span>
+                            "
+                          </span>
+                        </span>
+                        
+                      </span>
+                    </span>
+                    <span
+                      style={
+                        Object {
+                          "color": "#444",
+                        }
+                      }
+                    >
+                      &gt;
+                    </span>
+                  </div>
+                  <div>
+                    <div
+                      style={
+                        Object {
+                          "paddingLeft": 33,
+                          "paddingRight": 3,
+                        }
+                      }
+                    >
+                      <span
+                        style={
+                          Object {
+                            "color": "#444",
+                          }
+                        }
+                      >
+                        &lt;
+                        p
+                      </span>
+                      <span />
+                      <span
+                        style={
+                          Object {
+                            "color": "#444",
+                          }
+                        }
+                      >
+                        &gt;
+                      </span>
+                    </div>
+                    <div
+                      style={
+                        Object {
+                          "paddingLeft": 48,
+                          "paddingRight": 3,
+                        }
+                      }
+                    >
+                      <span
+                        style={
+                          Object {
+                            "color": "#444",
+                          }
+                        }
+                      >
+                        Eu sint anim ex adipisicing magna proident proident exercitation non mollit et. Reprehenderit cupidatat est qui ut ipsum proident sunt non eiusmod. Voluptate esse pariatur dolor fugiat pariatur reprehenderit irure consequat. Laboris exercitation tempor dolore dolor dolore. In non officia velit nostrud nostrud.
+                      </span>
+                    </div>
+                    <div
+                      style={
+                        Object {
+                          "paddingLeft": 33,
+                          "paddingRight": 3,
+                        }
+                      }
+                    >
+                      <span
+                        style={
+                          Object {
+                            "color": "#444",
+                          }
+                        }
+                      >
+                        &lt;/
+                        p
+                        &gt;
+                      </span>
+                    </div>
+                  </div>
+                  <div>
+                    <div
+                      style={
+                        Object {
+                          "paddingLeft": 33,
+                          "paddingRight": 3,
+                        }
+                      }
+                    >
+                      <span
+                        style={
+                          Object {
+                            "color": "#444",
+                          }
+                        }
+                      >
+                        &lt;
+                        p
+                      </span>
+                      <span />
+                      <span
+                        style={
+                          Object {
+                            "color": "#444",
+                          }
+                        }
+                      >
+                        &gt;
+                      </span>
+                    </div>
+                    <div
+                      style={
+                        Object {
+                          "paddingLeft": 48,
+                          "paddingRight": 3,
+                        }
+                      }
+                    >
+                      <span
+                        style={
+                          Object {
+                            "color": "#444",
+                          }
+                        }
+                      >
+                        Commodo tempor eiusmod adipisicing ipsum dolor exercitation aliqua amet exercitation non. Aliqua do nisi ad sint veniam dolor nostrud irure sit cupidatat. Minim anim velit qui elit excepteur nulla culpa Lorem. Aliqua velit eu ut consectetur exercitation dolore ea nostrud consequat. Aliqua consequat eiusmod pariatur mollit dolor amet ipsum elit laborum magna cillum culpa ex tempor.
+                      </span>
+                    </div>
+                    <div
+                      style={
+                        Object {
+                          "paddingLeft": 33,
+                          "paddingRight": 3,
+                        }
+                      }
+                    >
+                      <span
+                        style={
+                          Object {
+                            "color": "#444",
+                          }
+                        }
+                      >
+                        &lt;/
+                        p
+                        &gt;
+                      </span>
+                    </div>
+                  </div>
+                  <div
+                    style={
+                      Object {
+                        "paddingLeft": 18,
+                        "paddingRight": 3,
+                      }
+                    }
+                  >
+                    <span
+                      style={
+                        Object {
+                          "color": "#444",
+                        }
+                      }
+                    >
+                      &lt;/
+                      Card
+                      &gt;
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <button
+                className="css-1naocv3 eva467m0"
+                onClick={[Function]}
+              >
+                <div
+                  className="css-lvl6aa eva467m1"
+                >
+                  <div
+                    style={
+                      Object {
+                        "marginBottom": 6,
+                      }
+                    }
+                  >
+                    Copied!
+                  </div>
+                  <div>
+                    Copy
+                  </div>
+                </div>
+              </button>
+            </pre>
+          </div>
+          <div>
+            <h1
+              style={
+                Object {
+                  "borderBottom": "1px solid #EEE",
+                  "fontSize": "25px",
+                  "margin": "20px 0 0 0",
+                  "padding": "0 0 5px 0",
+                }
+              }
+            >
+              Prop Types
+            </h1>
+            <div>
+              <h2
+                style={
+                  Object {
+                    "margin": "20px 0 0 0",
+                  }
+                }
+              >
+                "
+                Card
+                " Component
+              </h2>
+              <table
+                className="css-1uhv8nx e1vdo5380"
+              >
+                <thead>
+                  <tr>
+                    <th
+                      className="css-11b5gui e6fp4ir1"
+                    >
+                      property
+                    </th>
+                    <th
+                      className="css-11b5gui e6fp4ir1"
+                    >
+                      propType
+                    </th>
+                    <th
+                      className="css-11b5gui e6fp4ir1"
+                    >
+                      required
+                    </th>
+                    <th
+                      className="css-11b5gui e6fp4ir1"
+                    >
+                      default
+                    </th>
+                    <th
+                      className="css-11b5gui e6fp4ir1"
+                    >
+                      description
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td
+                      className="css-1qcb1f7 e6fp4ir0"
+                    >
+                      style
+                    </td>
+                    <td
+                      className="css-1qcb1f7 e6fp4ir0"
+                    >
+                      <span>
+                        unknown
+                      </span>
+                    </td>
+                    <td
+                      className="css-11b5gui e6fp4ir0"
+                    >
+                      -
+                    </td>
+                    <td
+                      className="css-11b5gui e6fp4ir0"
+                    >
+                      <span
+                        style={
+                          Object {
+                            "color": "#666",
+                          }
+                        }
+                      >
+                        {
+                        }
+                      </span>
+                    </td>
+                    <td
+                      className="css-11b5gui e6fp4ir0"
+                    />
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

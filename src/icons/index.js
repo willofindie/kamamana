@@ -1,4 +1,7 @@
 import React from 'react';
+import makeCancelable from '/utils/cancelable-promise';
+
+import type { CancelablePromise } from '/utils/cancelable-promise';
 import type { Props as WrapperProps } from './wrapper-styled';
 
 export type Props = {
@@ -15,11 +18,25 @@ export default class Icon extends React.Component<Props & WrapperProps, State> {
     module: null,
   };
 
+  dynamicPromise: ?CancelablePromise = null;
+
   componentDidMount() {
-    this.props.icon &&
-      import(`./${this.props.icon}`).then(module => {
-        this.setState({ module: module.default });
-      });
+    if (this.props.icon) {
+      this.dynamicPromise = makeCancelable(import(`./${this.props.icon}`));
+      this.dynamicPromise.promise
+        .then(module => {
+          this.setState({ module: module.default });
+        })
+        .catch(rejected => {
+          console.log('Got Canceled: ', !!rejected.isCanceled);
+        });
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.dynamicPromise) {
+      this.dynamicPromise.cancel();
+    }
   }
 
   render() {
