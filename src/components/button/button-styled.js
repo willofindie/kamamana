@@ -19,6 +19,8 @@ const Button = jsx(
     },
     '& .btn-icon': {
       mr: 8,
+      h: 16,
+      w: 16,
     },
     '& .btn-text': {
       fz: '14px',

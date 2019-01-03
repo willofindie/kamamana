@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { KamamanaConsumer } from '/src/context';
 import ButtonStyled, { disabledCSS } from './button-styled';
-import Icon from '/src/icons';
 import { darkenHexToAmount, isDarkHex } from '/utils/colors';
 import filterKeys from '/utils/filterKeys';
 import filterProps from './filter-props';
 
 // Import Types
+import type { Element } from 'react';
 import type { Color } from '/utils/colors';
 import type { Props, State, Theme } from './index.d';
 
@@ -15,8 +15,6 @@ const darkenHexByTen = darkenHexToAmount(10);
 export default class Button extends Component<Props, State> {
   static defaultProps = {
     style: {},
-    iconW: '16px',
-    iconH: '16px',
   };
 
   getGhostCSS = (context: Object) => {
@@ -82,6 +80,11 @@ export default class Button extends Component<Props, State> {
   // Dynamic CSS
   getCSS = (type: ?string, context: Object) => {
     const css = this.getCSSFromType(type, context);
+    const iconSize = {};
+    if (this.props.iconH && this.props.iconW) {
+      iconSize.h = this.props.iconH;
+      iconSize.w = this.props.iconW;
+    }
     return {
       bgc: css.bgc,
       c: css.fgc,
@@ -93,27 +96,36 @@ export default class Button extends Component<Props, State> {
           bd: `1px solid ${css.bdcHover}`,
         },
       },
+      '& .btn-icon': iconSize,
       '&[disabled], &.disabled': disabledCSS(context),
       ...this.props.style,
     };
   };
 
+  getIconNode = (icon: ?Element<any>): ?Element<any> => {
+    if (icon && React.Children.count(icon)) {
+      const className = icon.props.className ? `${icon.props.className} btn-icon` : `btn-icon`;
+      return React.cloneElement(icon, { className }, icon.props.children);
+    }
+
+    return null;
+  };
+
   render() {
     const { custom, rest } = filterProps(this.props);
+    const { icon, text, type, disabled, className } = custom;
     return (
       <KamamanaConsumer>
         {context => {
           return (
             <ButtonStyled
-              css={this.getCSS(custom.type, context)}
-              disabled={custom.disabled}
-              className={custom.className}
+              css={this.getCSS(type, context)}
+              disabled={disabled}
+              className={className}
               {...rest}
             >
-              {custom.icon && (
-                <Icon className='btn-icon' icon={custom.icon} w={custom.iconW} h={custom.iconH} />
-              )}
-              <span>{custom.text}</span>
+              {this.getIconNode(icon)}
+              {text && <span>{text}</span>}
             </ButtonStyled>
           );
         }}

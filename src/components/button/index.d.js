@@ -1,4 +1,4 @@
-import type { Node } from 'react';
+import type { Node, Element } from 'react';
 
 export type Props = {
   style: Object,
@@ -12,9 +12,9 @@ export type Props = {
   // Button-DOM Specific Props
   disabled?: boolean,
   text: string,
-  icon?: string,
-  iconW: string,
-  iconH: string,
+  icon?: Element<any>,
+  iconW?: number | string,
+  iconH?: number | string,
 
   // Default Props
   className?: string,
