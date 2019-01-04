@@ -81,7 +81,7 @@
     "prebuild": "rimraf dist .stats/*",
     "build": "rollup -c --environment NODE_ENV:production",
     "build:stories": "build-storybook -c .storybook -o .out",
-    "prepublish": "run-p flow lint test build",
+    "prepublishOnly": "run-p flow lint test build",
     "analyze": "NODE_ANALYZE=1 rollup -c",
     "preghpages": "npm run build:stories",
     "ghpages": "gh-pages -d .out",
