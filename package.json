@@ -82,6 +82,7 @@
     "lint": "eslint ./src",
     "flow": "flow check",
     "test": "NODE_ENV=test jest",
+    "test:stories": "NODE_ENV=test jest --testMatch \"**/?(*.)+(storyshots).js\"",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "prebuild": "rimraf dist .stats/*",
     "build": "rollup -c --environment NODE_ENV:production",

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { KamamanaConsumer } from '/src/context';
 import ButtonStyled, { disabledCSS } from './button-styled';
-import { darkenHexToAmount, isDarkHex } from '/utils/colors';
+import { darkenHexToAmount, isDarkHex, hexToRgb } from '/utils/colors';
 import filterKeys from '/utils/filterKeys';
 import filterProps from './filter-props';
 
@@ -85,16 +85,23 @@ export default class Button extends Component<Props, State> {
       iconSize.h = this.props.iconH;
       iconSize.w = this.props.iconW;
     }
+    const outlineRGB = hexToRgb(css.bdcHover);
+    const focusColor = outlineRGB
+      ? opacity => `rgba(${outlineRGB.r}, ${outlineRGB.g}, ${outlineRGB.b}, ${opacity})`
+      : opacity => `rgba(0, 0, 0, ${opacity})`;
     return {
       bgc: css.bgc,
       c: css.fgc,
       bd: `1px solid ${css.bdc}`,
-      '&:hover': {
+      '&:hover, &:focus': {
         '&:not([disabled])': {
           bgc: css.bgcHover,
           c: css.fgcHover,
           bd: `1px solid ${css.bdcHover}`,
         },
+      },
+      '&:focus': {
+        bxsh: `0 0 3px 2px ${focusColor(0.3)}, 0 0 0 2px ${focusColor(0.1)}`,
       },
       '& .btn-icon': iconSize,
       '&[disabled], &.disabled': disabledCSS(context),
@@ -125,7 +132,7 @@ export default class Button extends Component<Props, State> {
               {...rest}
             >
               {this.getIconNode(icon)}
-              {text && <span>{text}</span>}
+              {text && <span className='btn-text'>{text}</span>}
             </ButtonStyled>
           );
         }}

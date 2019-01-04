@@ -59,9 +59,11 @@ exports[`Storyshots Buttons bordered 1`] = `
       }
     >
       <button
-        className=" kamamana-ButtonStyled kamamana-_1sicujq"
+        className=" kamamana-ButtonStyled kamamana-_xs0rw0"
       >
-        <span>
+        <span
+          className="btn-text"
+        >
           Click Me
         </span>
       </button>
@@ -469,9 +471,11 @@ exports[`Storyshots Buttons custom 1`] = `
       }
     >
       <button
-        className=" kamamana-ButtonStyled kamamana-_1k3lrwt"
+        className=" kamamana-ButtonStyled kamamana-_am0lgu"
       >
-        <span>
+        <span
+          className="btn-text"
+        >
           Click Me
         </span>
       </button>
@@ -1040,9 +1044,11 @@ exports[`Storyshots Buttons default 1`] = `
       }
     >
       <button
-        className=" kamamana-ButtonStyled kamamana-_19yrjgm"
+        className=" kamamana-ButtonStyled kamamana-_15wupid"
       >
-        <span>
+        <span
+          className="btn-text"
+        >
           Click Me
         </span>
       </button>
@@ -1423,10 +1429,12 @@ exports[`Storyshots Buttons disabled 1`] = `
       }
     >
       <button
-        className=" kamamana-ButtonStyled kamamana-_19yrjgm"
+        className=" kamamana-ButtonStyled kamamana-_15wupid"
         disabled={true}
       >
-        <span>
+        <span
+          className="btn-text"
+        >
           Click Me
         </span>
       </button>
@@ -1823,9 +1831,11 @@ exports[`Storyshots Buttons ghost 1`] = `
         }
       >
         <button
-          className=" kamamana-ButtonStyled kamamana-_1q600g6"
+          className=" kamamana-ButtonStyled kamamana-_jya76v"
         >
-          <span>
+          <span
+            className="btn-text"
+          >
             Click Me
           </span>
         </button>

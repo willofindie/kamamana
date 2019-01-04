@@ -18,12 +18,11 @@ const Button = jsx(
       ol: 'none',
     },
     '& .btn-icon': {
-      mr: 8,
       h: 16,
       w: 16,
     },
     '& .btn-text': {
-      fz: '14px',
+      fz: '1em',
     },
     '& .btn-icon + .btn-text': {
       ml: '8px',

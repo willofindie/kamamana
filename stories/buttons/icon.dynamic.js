@@ -9,6 +9,7 @@ import { faIgloo } from '@fortawesome/free-solid-svg-icons';
 // Material Icons
 import { SvgIcon } from '@material-ui/core';
 import { ThreeDRotation } from '@material-ui/icons';
+import { CloudDownload } from '@material-ui/icons';
 
 import Icon from '../story-components/icons';
 import Button from '/components/button';
@@ -35,6 +36,7 @@ button.add('3rd-party icon support', () => (
   <div>
     <Button icon={<FontAwesomeIcon icon='igloo' />} text='Font-Awesome' />
     <Button icon={<ThreeDRotation />} text='Material Icons' />
+    <Button icon={<CloudDownload />} />
   </div>
 ));
 

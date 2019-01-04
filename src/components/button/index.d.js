@@ -11,7 +11,7 @@ export type Props = {
   block?: boolean,
   // Button-DOM Specific Props
   disabled?: boolean,
-  text: string,
+  text?: string,
   icon?: Element<any>,
   iconW?: number | string,
   iconH?: number | string,
