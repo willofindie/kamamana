@@ -1,4 +1,5 @@
 import compose from './compose';
+import { isString } from '/utils/validators';
 // Help taken from - https://stackoverflow.com/a/5624139/2849127
 
 export type Color = { r: number, g: number, b: number, a?: number };
@@ -129,3 +130,8 @@ export const darkenHexToAmount = (amount: number) =>
     rgbColor => darken(rgbColor, amount),
     rgbToHex
   );
+
+export const rgba = (color: string | Color, alpha: number = 0.5) => {
+  const _rgba = typeof color === 'string' ? hexToRgb(color) : color;
+  return _rgba ? `rgba(${_rgba.r}, ${_rgba.g}, ${_rgba.b}, ${_rgba.a || alpha})` : '';
+};

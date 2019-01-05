@@ -3,6 +3,7 @@
 export default {
   fadedWhite: '#FAFAFA',
   fadedBlack: '#424242',
+  borderBlack: '#B0BEC5', // Blue Grey 200
   light: {
     primary: '#00897B', // Teal 600
     primaryFg: '#FAFAFA', // Grey 50
