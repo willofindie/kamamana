@@ -132,6 +132,6 @@ export const darkenHexToAmount = (amount: number) =>
   );
 
 export const rgba = (color: string | Color, alpha: number = 0.5) => {
-  const _rgba = typeof color === 'string' ? hexToRgb(color) : color;
+  const _rgba = isString(color) ? hexToRgb(color) : color;
   return _rgba ? `rgba(${_rgba.r}, ${_rgba.g}, ${_rgba.b}, ${_rgba.a || alpha})` : '';
 };
