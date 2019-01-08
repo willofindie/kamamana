@@ -21,6 +21,7 @@
     "dist"
   ],
   "dependencies": {
+    "memoize-one": "^5.0.0",
     "nano-css": "^3.5.0"
   },
   "devDependencies": {

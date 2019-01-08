@@ -25,6 +25,7 @@ flow-typed/npm/@fortawesome/react-fontawesome_vx.x.x.js
 flow-typed/npm/@fortawesome/free-solid-svg-icons_vx.x.x.js
 flow-typed/npm/@material-ui/icons_vx.x.x.js
 flow-typed/npm/@material-ui/core_vx.x.x.js
+flow-typed/npm/memoize-one_vx.x.x.js
 
 [lints]
 

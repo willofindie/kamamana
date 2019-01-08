@@ -2,13 +2,16 @@ export type Props = {
   id?: string,
   className?: string,
   label?: string,
-  type: string,
+  htmlType: string,
+  type: 'material' | 'default',
   placeholder?: string,
   defaultValue?: string | number,
   value?: string | number,
+  validator?: Function,
 
   // styles:
-  inputStyle: Object,
+  style?: Object, // Reflects Container Styles...
+  inputStyle: Object, // Reflects Input Styles..
   bdcHover?: string,
 
   // Methods...
@@ -17,4 +20,10 @@ export type Props = {
 
 export type State = {
   value: string | number,
+  invalid: boolean,
+};
+
+export type MemoizedData = {
+  type: string,
+  css: Object,
 };
