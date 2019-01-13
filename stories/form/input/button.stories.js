@@ -2,6 +2,8 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
+import Flexbox from '/components/flexbox';
+import Card from '/components/card';
 import Form from '/components/form';
 import { Input, InputButton } from '/components/form/input';
 
@@ -23,19 +25,32 @@ buttons.add('ghost', () => (
 ));
 buttons.add('disabled', () => <InputButton disabled text='Click Me' />);
 buttons.add('inside form', () => {
+  // Need to handle the layout thing, it becomes very complicated after some time...
   return (
-    <Form
-      onSubmit={formData => {
-        for (var [key, value] of formData.entries()) {
-          console.log(`${key}: ${value}`);
-        }
-        action('form:onSubmit')(formData);
-      }}
-    >
-      <Input name='name' placeholder='Enter name' />
-      <Input htmlType='password' name='pass' placeholder='Password' />
-      <InputButton text='Submit' />
-      <InputButton htmlType='reset' text='Reset' />
-    </Form>
+    <Card>
+      <Form
+        onSubmit={formData => {
+          for (var [key, value] of formData.entries()) {
+            console.log(`${key}: ${value}`);
+          }
+          action('form:onSubmit')(formData);
+        }}
+      >
+        <Flexbox style={{ fxd: 'column' }}>
+          <Input label='Name: ' style={{ mb: 15 }} name='name' placeholder='Enter name' />
+          <Input
+            label='Password: '
+            style={{ mb: 15 }}
+            htmlType='password'
+            name='pass'
+            placeholder='Password'
+          />
+          <Flexbox>
+            <InputButton text='Submit' />
+            <InputButton htmlType='reset' text='Reset' />
+          </Flexbox>
+        </Flexbox>
+      </Form>
+    </Card>
   );
 });
