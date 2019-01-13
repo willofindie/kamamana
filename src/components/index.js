@@ -6,4 +6,5 @@ export { default as Flexbox } from './flexbox';
 export { default as FlexItem } from './flexbox/flex-item-styled';
 
 // Form Components...
-export { Input } from './form/input';
+export { default as Form } from './form';
+export { Input, InputButton } from './form/input';

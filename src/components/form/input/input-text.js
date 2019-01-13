@@ -11,6 +11,8 @@ import type { Props, State, MemoizedData } from './index.d';
  * Supported Input Types:
  *
  *  - Only text fields like `text`, `email`, `password` and related..., so as to reduce complexity
+ *
+ * TODO: https://www.chromium.org/developers/design-documents/create-amazing-password-forms
  */
 export default class Input extends PureComponent<Props, State> {
   static defaultProps = {

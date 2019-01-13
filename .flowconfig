@@ -20,6 +20,7 @@ flow-typed/npm/jest_v23.x.x.js
 flow-typed/npm/@storybook/react_v4.x.x.js
 flow-typed/npm/@storybook/addon-storyshots_vx.x.x.js
 flow-typed/npm/@storybook/addon-storyshots-puppeteer_vx.x.x.js
+flow-typed/npm/@storybook/addon-actions_vx.x.x.js
 flow-typed/npm/@fortawesome/fontawesome-svg-core_vx.x.x.js
 flow-typed/npm/@fortawesome/react-fontawesome_vx.x.x.js
 flow-typed/npm/@fortawesome/free-solid-svg-icons_vx.x.x.js
