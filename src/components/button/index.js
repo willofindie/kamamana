@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
+import memoizeOne from 'memoize-one';
 import { KamamanaConsumer } from '/src/context';
 import ButtonStyled, { disabledCSS } from './button-styled';
+import shouldUpdateMemoize from '/utils/should-update-memoize';
 import { darkenHexToAmount, isDarkHex, hexToRgb } from '/utils/colors';
-import filterKeys from '/utils/filterKeys';
-import filterProps from './filter-props';
 
 // Import Types
 import type { Element } from 'react';
@@ -17,73 +17,81 @@ export default class Button extends PureComponent<Props, State> {
     style: {},
   };
 
-  getGhostCSS = (context: Object) => {
-    const btnTheme = context.btn || {};
+  getMemoizedCSS: Function;
+
+  constructor(props: Props) {
+    super(props);
+    this.getMemoizedCSS = memoizeOne(this.getCSS, shouldUpdateMemoize);
+  }
+
+  getGhostCSS = (shallowProps: Object) => {
+    const btnTheme = shallowProps.context.btn || {};
     const bgc = 'transparent';
     const bgcHover = bgc;
-    const fgc = this.props.style.c || btnTheme.c || context.fadedWhite;
-    const fgcHover = this.props.fgcHover || context.light.primary;
+    const fgc = shallowProps.style.c || btnTheme.c || shallowProps.context.fadedWhite;
+    const fgcHover = shallowProps.fgcHover || shallowProps.context.light.primary;
     return {
       bgc,
       bgcHover,
       fgc,
       fgcHover,
-      bdc: this.props.style.bdc || btnTheme.bdc || fgc,
-      bdcHover: this.props.bdcHover || fgcHover,
+      bdc: shallowProps.style.bdc || btnTheme.bdc || fgc,
+      bdcHover: shallowProps.bdcHover || fgcHover,
     };
   };
 
-  getBorderedCSS = (context: Object) => {
-    const btnTheme = context.btn || {};
-    const bgc = context.fadedWhite;
+  getBorderedCSS = (shallowProps: Object) => {
+    const btnTheme = shallowProps.context.btn || {};
+    const bgc = shallowProps.context.fadedWhite;
     const bgcHover = bgc;
-    const fgc = this.props.style.c || btnTheme.c || context.fadedBlack;
-    const fgcHover = this.props.fgcHover || context.light.primary;
+    const fgc = shallowProps.style.c || btnTheme.c || shallowProps.context.fadedBlack;
+    const fgcHover = shallowProps.fgcHover || shallowProps.context.light.primary;
     return {
       bgc,
       bgcHover,
       fgc,
       fgcHover,
-      bdc: this.props.style.bdc || btnTheme.bdc || fgc,
-      bdcHover: this.props.bdcHover || fgcHover,
+      bdc: shallowProps.style.bdc || btnTheme.bdc || fgc,
+      bdcHover: shallowProps.bdcHover || fgcHover,
     };
   };
 
-  getDefaultCSS = (context: Object) => {
-    const btnTheme = context.btn || {};
-    const bgc = this.props.style.bgc || btnTheme.bgc || context.light.primary;
+  getDefaultCSS = (shallowProps: Object) => {
+    const btnTheme = shallowProps.context.btn || {};
+    const bgc = shallowProps.style.bgc || btnTheme.bgc || shallowProps.context.light.primary;
     const bgcHover =
-      this.props.bgcHover ||
-      darkenHexByTen(this.props.style.bgc || btnTheme.bgc || context.light.primary);
+      shallowProps.bgcHover ||
+      darkenHexByTen(shallowProps.style.bgc || btnTheme.bgc || shallowProps.context.light.primary);
     return {
       bgc,
       bgcHover,
-      fgc: this.props.style.c || btnTheme.c || context.fadedWhite,
+      fgc: shallowProps.style.c || btnTheme.c || shallowProps.context.fadedWhite,
       fgcHover:
-        this.props.fgcHover || (isDarkHex(bgcHover) ? context.fadedWhite : context.fadedBlack),
-      bdc: this.props.style.bdc || btnTheme.bdc || bgc,
-      bdcHover: this.props.bdcHover || bgcHover,
+        shallowProps.fgcHover ||
+        (isDarkHex(bgcHover) ? shallowProps.context.fadedWhite : shallowProps.context.fadedBlack),
+      bdc: shallowProps.style.bdc || btnTheme.bdc || bgc,
+      bdcHover: shallowProps.bdcHover || bgcHover,
     };
   };
 
-  getCSSFromType = (type: ?string, context: Object) => {
+  getCSSFromType = (type: ?string, shallowProps: Object) => {
     switch (type) {
       case 'ghost':
-        return this.getGhostCSS(context);
+        return this.getGhostCSS(shallowProps);
       case 'bordered':
-        return this.getBorderedCSS(context);
+        return this.getBorderedCSS(shallowProps);
       default:
-        return this.getDefaultCSS(context);
+        return this.getDefaultCSS(shallowProps);
     }
   };
 
   // Dynamic CSS
-  getCSS = (type: ?string, context: Object) => {
-    const css = this.getCSSFromType(type, context);
+  getCSS = (type: ?string, shallowProps: Object) => {
+    const css = this.getCSSFromType(type, shallowProps);
     const iconSize = {};
-    if (this.props.iconH && this.props.iconW) {
-      iconSize.h = this.props.iconH;
-      iconSize.w = this.props.iconW;
+    if (shallowProps.iconH && shallowProps.iconW) {
+      iconSize.h = shallowProps.iconH;
+      iconSize.w = shallowProps.iconW;
     }
     const outlineRGB = hexToRgb(css.bdcHover);
     const focusColor = outlineRGB
@@ -104,8 +112,8 @@ export default class Button extends PureComponent<Props, State> {
         bxsh: `0 0 3px 2px ${focusColor(0.3)}, 0 0 0 2px ${focusColor(0.1)}`,
       },
       '& .btn-icon': iconSize,
-      '&[disabled], &.disabled': disabledCSS(context),
-      ...this.props.style,
+      '&[disabled], &.disabled': disabledCSS(shallowProps.context),
+      ...shallowProps.style,
     };
   };
 
@@ -118,25 +126,33 @@ export default class Button extends PureComponent<Props, State> {
     return null;
   };
 
-  render() {
-    const { custom, rest } = filterProps(this.props);
-    const { icon, text, type, disabled, className } = custom;
+  renderButton = (context: Object) => {
+    const {
+      style,
+      bgcHover,
+      fgcHover,
+      bdcHover,
+      type,
+      block,
+      text,
+      disabled,
+      icon,
+      iconW,
+      iconH,
+      className,
+      ...rest
+    } = this.props;
+    const shallowProps = { context, style, bgcHover, fgcHover, bdcHover, iconH, iconW };
+    const css = this.getMemoizedCSS(type, shallowProps);
     return (
-      <KamamanaConsumer>
-        {context => {
-          return (
-            <ButtonStyled
-              css={this.getCSS(type, context)}
-              disabled={disabled}
-              className={className}
-              {...rest}
-            >
-              {this.getIconNode(icon)}
-              {text && <span className='btn-text'>{text}</span>}
-            </ButtonStyled>
-          );
-        }}
-      </KamamanaConsumer>
+      <ButtonStyled css={css} disabled={disabled} className={className} {...rest}>
+        {this.getIconNode(icon)}
+        {text && <span className='btn-text'>{text}</span>}
+      </ButtonStyled>
     );
+  };
+
+  render() {
+    return <KamamanaConsumer>{this.renderButton}</KamamanaConsumer>;
   }
 }

@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import Flexbox from '/components/flexbox';
+import FlexItem from '/components/flexbox/flex-item-styled';
 import Card from '/components/card';
 import Form from '/components/form';
 import { Input, InputButton } from '/components/form/input';
@@ -45,9 +46,13 @@ buttons.add('inside form', () => {
             name='pass'
             placeholder='Password'
           />
-          <Flexbox>
-            <InputButton text='Submit' />
-            <InputButton htmlType='reset' text='Reset' />
+          <Flexbox style={{ jc: 'flex-end' }}>
+            <FlexItem style={{ fxg: 0, fxb: 'auto' }}>
+              <InputButton text='Submit' />
+            </FlexItem>
+            <FlexItem style={{ fxg: 0, fxb: 'auto', ta: 'right' }}>
+              <InputButton htmlType='reset' text='Reset' />
+            </FlexItem>
           </Flexbox>
         </Flexbox>
       </Form>

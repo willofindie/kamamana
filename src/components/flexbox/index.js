@@ -31,13 +31,13 @@ export default class Flexbox extends React.PureComponent<Props, State> {
         if (child.type === FlexboxItemStyled) {
           return React.cloneElement(
             child,
-            { css: { ...child.props.style, fxb: `${width}%` } },
+            { css: { fxb: `${width}%`, ...child.props.style } },
             child.props.children
           );
         }
         const { itemStyle, ...rest } = child.props;
         return (
-          <FlexboxItemStyled css={{ ...itemStyle, fxb: `${width}%` }}>
+          <FlexboxItemStyled css={{ fxb: `${width}%`, ...itemStyle }}>
             {React.cloneElement(child, { ...rest }, child.props.children)}
           </FlexboxItemStyled>
         );

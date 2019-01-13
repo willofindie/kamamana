@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import memoizeOne from 'memoize-one';
 import { KamamanaConsumer } from '/src/context';
 import ContainerStyled from '../container-styled';
+import shouldUpdateMemoize from '/utils/should-update-memoize';
 import { rgba } from '/utils/colors';
 import { isNumber, isEmpty } from '/utils/validators';
 
@@ -33,7 +34,7 @@ export default class Input extends PureComponent<Props, State> {
       value: props.defaultValue || '',
       invalid: false,
     };
-    this.getMemoizedData = memoizeOne(this.getTypeAndStyles, this.shouldUpdateMemoize);
+    this.getMemoizedData = memoizeOne(this.getTypeAndStyles, shouldUpdateMemoize);
   }
 
   handleBlur = (e: SyntheticInputEvent<HTMLInputElement>) => {
@@ -55,11 +56,11 @@ export default class Input extends PureComponent<Props, State> {
     });
   };
 
-  getDefaultCSS = (context: Object, props: Props) => {
-    const inputTheme = context.input || {};
-    const bgc = inputTheme.bgc || context.fadedWhite;
-    const bdc = props.inputStyle.bdc || inputTheme.bdc || context.borderBlack;
-    const _bdcHover = props.bdcHover || context.light.primary;
+  getDefaultCSS = (shallowProps: Object) => {
+    const inputTheme = shallowProps.context.input || {};
+    const bgc = inputTheme.bgc || shallowProps.context.fadedWhite;
+    const bdc = shallowProps.inputStyle.bdc || inputTheme.bdc || shallowProps.context.borderBlack;
+    const _bdcHover = shallowProps.bdcHover || shallowProps.context.light.primary;
     return {
       bgc,
       bdc,
@@ -67,17 +68,17 @@ export default class Input extends PureComponent<Props, State> {
     };
   };
 
-  getCSSFromType = (context: Object, props: Props) => {
-    switch (props.type) {
+  getCSSFromType = (shallowProps: Object) => {
+    switch (shallowProps.type) {
       case 'material':
         return {};
       default:
-        return this.getDefaultCSS(context, props);
+        return this.getDefaultCSS(shallowProps);
     }
   };
 
-  getCSS = (context: Object, props: Props) => {
-    const css = this.getCSSFromType(context, props);
+  getCSS = (shallowProps: Object) => {
+    const css = this.getCSSFromType(shallowProps);
     const focusColor = rgba(css.bdcHover, 0.3);
     return {
       '& .input-component > input': {
@@ -91,9 +92,9 @@ export default class Input extends PureComponent<Props, State> {
         '&:focus': {
           bxsh: `0 0 3px 1px ${focusColor}, 0 0 0 1px ${focusColor}`,
         },
-        ...props.inputStyle,
+        ...shallowProps.inputStyle,
       },
-      ...props.style,
+      ...shallowProps.style,
     };
   };
 
@@ -102,29 +103,7 @@ export default class Input extends PureComponent<Props, State> {
     return rest;
   };
 
-  shouldUpdateMemoize = (newArgs: mixed[], oldArgs: mixed[]): boolean =>
-    newArgs.length === oldArgs.length &&
-    newArgs.every(
-      (newArg: mixed, index: number): boolean => {
-        if (newArg && typeof newArg === 'object' && typeof oldArgs[index] === 'object') {
-          // this check is very vague, but since I know (for now) args can be either string or object, it will work fine.
-          const next: Object = newArg;
-          const last: Object = oldArgs[index];
-          return Object.keys(next).every(
-            // Helps in one level down shallow comparison for objects...
-            (key: string): boolean => {
-              if (next.hasOwnProperty(key) && last.hasOwnProperty(key)) {
-                return next[key] === last[key];
-              }
-              return false;
-            }
-          );
-        }
-        return newArg === oldArgs[index];
-      }
-    );
-
-  getTypeAndStyles = (htmlType: string, context: Object, props: Props): MemoizedData => {
+  getTypeAndStyles = (htmlType: string, shallowProps: Object): MemoizedData => {
     const memoizedData = {
       type: 'text',
       css: null,
@@ -139,7 +118,7 @@ export default class Input extends PureComponent<Props, State> {
       default:
         break;
     }
-    memoizedData.css = this.getCSS(context, props);
+    memoizedData.css = this.getCSS(shallowProps);
     return memoizedData;
   };
 
@@ -160,7 +139,8 @@ export default class Input extends PureComponent<Props, State> {
       validator,
       ...rest
     } = this.props;
-    const memoizedData = this.getMemoizedData(htmlType, context, {
+    const memoizedData = this.getMemoizedData(htmlType, {
+      context,
       type,
       style,
       inputStyle,

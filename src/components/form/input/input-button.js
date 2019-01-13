@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import memoizeOne from 'memoize-one';
 import { KamamanaConsumer } from '/src/context';
 import InputButtonStyled, { disabledCSS } from './input-button-styled';
+import shouldUpdateMemoize from '/utils/should-update-memoize';
 import { darkenHexToAmount, isDarkHex, hexToRgb } from '/utils/colors';
 import { isNumber, isEmpty } from '/utils/validators';
 
@@ -28,7 +29,7 @@ export default class InputButton extends PureComponent<Props> {
 
   constructor(props: Props) {
     super(props);
-    this.getMemoizedData = memoizeOne(this.getTypeAndStyles, this.shouldUpdateMemoize);
+    this.getMemoizedData = memoizeOne(this.getTypeAndStyles, shouldUpdateMemoize);
   }
 
   getGhostCSS = (shallowProps: Object) => {
@@ -125,31 +126,6 @@ export default class InputButton extends PureComponent<Props> {
       ...shallowProps.style,
     };
   };
-
-  /**
-   * O(n) complexity for `shallowProps`. so looks ok for now.
-   */
-  shouldUpdateMemoize = (newArgs: mixed[], oldArgs: mixed[]): boolean =>
-    newArgs.length === oldArgs.length &&
-    newArgs.every(
-      (newArg: mixed, index: number): boolean => {
-        if (newArg && typeof newArg === 'object' && typeof oldArgs[index] === 'object') {
-          // this check is very vague, but since I know (for now) args can be either string or object, it will work fine.
-          const next: Object = newArg;
-          const last: Object = oldArgs[index];
-          return Object.keys(next).every(
-            // Helps in one level down shallow comparison for objects...
-            (key: string): boolean => {
-              if (next.hasOwnProperty(key) && last.hasOwnProperty(key)) {
-                return next[key] === last[key];
-              }
-              return false;
-            }
-          );
-        }
-        return newArg === oldArgs[index];
-      }
-    );
 
   /**
    * This Function should be used, after being memoized

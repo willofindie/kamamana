@@ -1,11 +1,12 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
 import Button from '/components/button';
 
 const button = storiesOf('Buttons', module);
 
-button.add('default', () => <Button text='Click Me' />);
+button.add('default', () => <Button text='Click Me' onClick={action('button:default:onClick')} />);
 button.add('bordered', () => <Button type='bordered' text='Click Me' />);
 button.add('ghost', () => (
   <div style={{ padding: '15px 13px 3px', backgroundColor: 'rgba(0, 0, 0, 0.3)' }}>
