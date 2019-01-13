@@ -11,16 +11,6 @@ export default class Flexbox extends React.PureComponent<Props, State> {
     },
   };
 
-  constructor(props: Props) {
-    super(props);
-    const colSpanList = props.cols ? props.cols.split(':').map(num => parseInt(num, 10)) : null;
-    this.state = {
-      // Surround each Child with FlexItem for proper, width calculations...
-      children: this.prefix(props, colSpanList),
-      colSpanList,
-    };
-  }
-
   // This method helps in wrapping flex items inside <FlexItemStyled /> if already not inside it.
   // Helps in removing extra code for <FlexItemStyled /> Wrappers...
   prefix = (props: Props, colSpanList: ?Array<number>): Array<ItemElement> => {
@@ -57,7 +47,10 @@ export default class Flexbox extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const css = { ...this.props.style };
-    return <FlexboxStyled css={css}>{this.state.children}</FlexboxStyled>;
+    const css = this.props.style;
+    const colSpanList = this.props.cols
+      ? this.props.cols.split(':').map(num => parseInt(num, 10))
+      : null;
+    return <FlexboxStyled css={css}>{this.prefix(this.props, colSpanList)}</FlexboxStyled>;
   }
 }

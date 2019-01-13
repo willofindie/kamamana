@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { KamamanaConsumer } from '/src/context';
 import ButtonStyled, { disabledCSS } from './button-styled';
 import { darkenHexToAmount, isDarkHex, hexToRgb } from '/utils/colors';
@@ -12,7 +12,7 @@ import type { Props, State, Theme } from './index.d';
 
 const darkenHexByTen = darkenHexToAmount(10);
 
-export default class Button extends Component<Props, State> {
+export default class Button extends PureComponent<Props, State> {
   static defaultProps = {
     style: {},
   };
