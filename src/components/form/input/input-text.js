@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import memoizeOne from 'memoize-one';
 import { KamamanaConsumer } from '/src/context';
 import ContainerStyled from '../container-styled';
@@ -12,7 +12,7 @@ import type { Props, State, MemoizedData } from './index.d';
  *
  *  - Only text fields like `text`, `email`, `password` and related..., so as to reduce complexity
  */
-export default class Input extends Component<Props, State> {
+export default class Input extends PureComponent<Props, State> {
   static defaultProps = {
     inputStyle: {},
     htmlType: 'text',
@@ -138,7 +138,6 @@ export default class Input extends Component<Props, State> {
         break;
     }
     memoizedData.css = this.getCSS(context, props);
-    console.log('Memoized Data: ', memoizedData);
     return memoizedData;
   };
 
