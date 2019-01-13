@@ -38,7 +38,13 @@ buttons.add('inside form', () => {
         }}
       >
         <Flexbox style={{ fxd: 'column' }}>
-          <Input label='Name: ' style={{ mb: 15 }} name='name' placeholder='Enter name' />
+          <Input
+            label='Name: '
+            cols='1:6'
+            style={{ mb: 15 }}
+            name='name'
+            placeholder='Enter name'
+          />
           <Input
             label='Password: '
             style={{ mb: 15 }}

@@ -20,6 +20,7 @@ export default class Input extends PureComponent<Props, State> {
     inputStyle: {},
     htmlType: 'text',
     type: 'default',
+    cols: '1:4',
   };
 
   get validator() {
@@ -80,7 +81,15 @@ export default class Input extends PureComponent<Props, State> {
   getCSS = (shallowProps: Object) => {
     const css = this.getCSSFromType(shallowProps);
     const focusColor = rgba(css.bdcHover, 0.3);
+    const spans = shallowProps.cols.split(':').map(num => parseInt(num, 10));
+    const totalWidth = spans.reduce((sum, val) => sum + val, 0);
     return {
+      '& .input-label': {
+        fxb: `${(spans[0] / totalWidth) * 100}%`,
+      },
+      '& .input-component': {
+        fxb: `${(spans[1] / totalWidth) * 100}%`,
+      },
       '& .input-component > input': {
         bgc: css.bgc,
         bd: `1px solid ${css.bdc}`,
@@ -137,12 +146,14 @@ export default class Input extends PureComponent<Props, State> {
       inputStyle,
       bdcHover,
       validator,
+      cols,
       ...rest
     } = this.props;
     const memoizedData = this.getMemoizedData(htmlType, {
       context,
       type,
       style,
+      cols,
       inputStyle,
       bdcHover,
     });

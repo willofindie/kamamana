@@ -13,6 +13,7 @@ export type Props = {
   style?: Object, // Reflects Container Styles...
   inputStyle: Object, // Reflects Input Styles..
   bdcHover?: string,
+  cols: string, // Reflects how label and input should be aligned, and grow
 
   // Methods...
   onChange?: Function,
