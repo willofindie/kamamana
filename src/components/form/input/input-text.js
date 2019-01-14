@@ -1,12 +1,11 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import memoizeOne from 'memoize-one';
 import { KamamanaConsumer } from '/src/context';
 import ContainerStyled from '../container-styled';
 import shouldUpdateMemoize from '/utils/should-update-memoize';
 import { rgba } from '/utils/colors';
 import { isNumber, isEmpty } from '/utils/validators';
-
-import type { Props, State, MemoizedData } from './index.d';
 
 /**
  * Supported Input Types:
@@ -15,7 +14,25 @@ import type { Props, State, MemoizedData } from './index.d';
  *
  * TODO: https://www.chromium.org/developers/design-documents/create-amazing-password-forms
  */
-export default class Input extends PureComponent<Props, State> {
+export default class Input extends PureComponent {
+  static propTypes = {
+    id: PropTypes.string,
+    className: PropTypes.string,
+    label: PropTypes.string,
+    htmlType: PropTypes.string.isRequired,
+    type: PropTypes.oneOf(['material', 'default']).isRequired,
+    placeholder: PropTypes.string,
+    defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    validator: PropTypes.func,
+    // styles:
+    style: PropTypes.object, // Reflects Container Styles...
+    inputStyle: PropTypes.object.isRequired, // Reflects Input Styles..
+    bdcHover: PropTypes.string,
+    cols: PropTypes.string.isRequired, // Reflects how label and input should be aligned, and grow
+    // Methods...
+    onChange: PropTypes.func,
+  };
   static defaultProps = {
     inputStyle: {},
     htmlType: 'text',
@@ -27,9 +44,7 @@ export default class Input extends PureComponent<Props, State> {
     return this.props;
   }
 
-  getMemoizedData: Function;
-
-  constructor(props: Props) {
+  constructor(props) {
     super(props);
     this.state = {
       value: props.defaultValue || '',
@@ -38,11 +53,11 @@ export default class Input extends PureComponent<Props, State> {
     this.getMemoizedData = memoizeOne(this.getTypeAndStyles, shouldUpdateMemoize);
   }
 
-  handleBlur = (e: SyntheticInputEvent<HTMLInputElement>) => {
+  handleBlur = e => {
     const value = e.target.value;
   };
 
-  handleChange = (e: SyntheticInputEvent<HTMLInputElement>) => {
+  handleChange = e => {
     const value = e.target.value;
 
     if (this.props.validator) {
@@ -57,7 +72,7 @@ export default class Input extends PureComponent<Props, State> {
     });
   };
 
-  getDefaultCSS = (shallowProps: Object) => {
+  getDefaultCSS = shallowProps => {
     const inputTheme = shallowProps.context.input || {};
     const bgc = inputTheme.bgc || shallowProps.context.fadedWhite;
     const bdc = shallowProps.inputStyle.bdc || inputTheme.bdc || shallowProps.context.borderBlack;
@@ -69,7 +84,7 @@ export default class Input extends PureComponent<Props, State> {
     };
   };
 
-  getCSSFromType = (shallowProps: Object) => {
+  getCSSFromType = shallowProps => {
     switch (shallowProps.type) {
       case 'material':
         return {};
@@ -78,7 +93,7 @@ export default class Input extends PureComponent<Props, State> {
     }
   };
 
-  getCSS = (shallowProps: Object) => {
+  getCSS = shallowProps => {
     const css = this.getCSSFromType(shallowProps);
     const focusColor = rgba(css.bdcHover, 0.3);
     const spans = shallowProps.cols.split(':').map(num => parseInt(num, 10));
@@ -107,12 +122,12 @@ export default class Input extends PureComponent<Props, State> {
     };
   };
 
-  filterInputStyle = (inputStyle: Object) => {
+  filterInputStyle = inputStyle => {
     const { bgc, bdc, ...rest } = inputStyle;
     return rest;
   };
 
-  getTypeAndStyles = (htmlType: string, shallowProps: Object): MemoizedData => {
+  getTypeAndStyles = (htmlType, shallowProps) => {
     const memoizedData = {
       type: 'text',
       css: null,
@@ -131,7 +146,7 @@ export default class Input extends PureComponent<Props, State> {
     return memoizedData;
   };
 
-  renderInput = (context: Object) => {
+  renderInput = context => {
     const {
       id,
       className,
@@ -178,6 +193,6 @@ export default class Input extends PureComponent<Props, State> {
   };
 
   render() {
-    return <KamamanaConsumer>{context => this.renderInput(context)}</KamamanaConsumer>;
+    return <KamamanaConsumer>{this.renderInput}</KamamanaConsumer>;
   }
 }

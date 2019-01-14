@@ -32,7 +32,6 @@
     "@babel/plugin-transform-parameters": "^7.2.0",
     "@babel/plugin-transform-template-literals": "^7.2.0",
     "@babel/preset-env": "^7.2.3",
-    "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.12",
     "@fortawesome/free-solid-svg-icons": "^5.6.3",
@@ -51,19 +50,18 @@
     "babel-plugin-dynamic-import-node": "^2.2.0",
     "babel-plugin-module-resolver": "^3.1.1",
     "babel-plugin-require-context-hook": "^1.0.0",
-    "babel-plugin-transform-flow-strip-types": "^6.22.0",
     "cross-env": "^5.2.0",
     "eslint": "^5.10.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
-    "flow-bin": "^0.89.0",
     "gh-pages": "^2.0.1",
     "husky": "^1.2.1",
     "jest": "^23.6.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^1.15.3",
+    "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-test-renderer": "^16.7.0",
@@ -84,7 +82,6 @@
   },
   "scripts": {
     "lint": "eslint ./src",
-    "flow": "flow check",
     "test": "cross-env NODE_ENV=test jest",
     "test:stories": "cross-env NODE_ENV=test jest --testMatch \"**/?(*.)+(storyshots).js\"",
     "storybook": "start-storybook -p 9001 -c .storybook",
@@ -93,7 +90,7 @@
     "build": "cross-env NODE_ENV=production rollup -c",
     "build:dev": "cross-env NODE_ENV=development rollup -c",
     "build:stories": "build-storybook -c .storybook -o .out",
-    "prepublishOnly": "run-p flow lint test build",
+    "prepublishOnly": "run-p lint test build",
     "analyze": "NODE_ANALYZE=1 rollup -c",
     "preghpages": "npm run build:stories",
     "ghpages": "gh-pages -d .out",
@@ -108,7 +105,7 @@
   "license": "MIT",
   "husky": {
     "hooks": {
-      "pre-commit": "run-p flow lint test"
+      "pre-commit": "run-p lint test"
     }
   },
   "jest": {

@@ -30,4 +30,10 @@ it('validates as an Array, isArray(array)', () => {
 it('validates as Object, isObject(object)', () => {
   expect(isObject({ foo: 'bar' })).toBeTruthy();
   expect(isObject([])).toBeTruthy();
+  expect(isObject(undefined)).toBeFalsy();
+  expect(isObject(null)).toBeFalsy();
+  expect(isObject(1)).toBeFalsy();
+  expect(isObject('foo')).toBeFalsy();
+  expect(isObject(true)).toBeFalsy();
+  expect(isObject(new String('foo'))).toBeFalsy();
 });

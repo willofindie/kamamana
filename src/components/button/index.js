@@ -1,30 +1,42 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import memoizeOne from 'memoize-one';
 import { KamamanaConsumer } from '/src/context';
 import ButtonStyled, { disabledCSS } from './button-styled';
 import shouldUpdateMemoize from '/utils/should-update-memoize';
 import { darkenHexToAmount, isDarkHex, hexToRgb } from '/utils/colors';
 
-// Import Types
-import type { Element } from 'react';
-import type { Color } from '/utils/colors';
-import type { Props, State, Theme } from './index.d';
-
 const darkenHexByTen = darkenHexToAmount(10);
 
-export default class Button extends PureComponent<Props, State> {
+export default class Button extends PureComponent {
+  static propTypes = {
+    // Styles specific Props
+    style: PropTypes.object.isRequired,
+    bgcHover: PropTypes.string, // Background Hover Color
+    fgcHover: PropTypes.string, // Text Hover Color
+    bdcHover: PropTypes.string, // Text Hover Color
+
+    type: PropTypes.oneOf(['bordered', 'ghost']),
+    block: PropTypes.bool,
+    // Button-DOM Specific Props
+    disabled: PropTypes.bool,
+    text: PropTypes.string,
+    icon: PropTypes.element,
+    iconW: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    iconH: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    // Default Props
+    className: PropTypes.string,
+  };
   static defaultProps = {
     style: {},
   };
 
-  getMemoizedCSS: Function;
-
-  constructor(props: Props) {
+  constructor(props) {
     super(props);
     this.getMemoizedCSS = memoizeOne(this.getCSS, shouldUpdateMemoize);
   }
 
-  getGhostCSS = (shallowProps: Object) => {
+  getGhostCSS = shallowProps => {
     const btnTheme = shallowProps.context.btn || {};
     const bgc = 'transparent';
     const bgcHover = bgc;
@@ -40,7 +52,7 @@ export default class Button extends PureComponent<Props, State> {
     };
   };
 
-  getBorderedCSS = (shallowProps: Object) => {
+  getBorderedCSS = shallowProps => {
     const btnTheme = shallowProps.context.btn || {};
     const bgc = shallowProps.context.fadedWhite;
     const bgcHover = bgc;
@@ -56,7 +68,7 @@ export default class Button extends PureComponent<Props, State> {
     };
   };
 
-  getDefaultCSS = (shallowProps: Object) => {
+  getDefaultCSS = shallowProps => {
     const btnTheme = shallowProps.context.btn || {};
     const bgc = shallowProps.style.bgc || btnTheme.bgc || shallowProps.context.light.primary;
     const bgcHover =
@@ -74,7 +86,7 @@ export default class Button extends PureComponent<Props, State> {
     };
   };
 
-  getCSSFromType = (type: ?string, shallowProps: Object) => {
+  getCSSFromType = (type, shallowProps) => {
     switch (type) {
       case 'ghost':
         return this.getGhostCSS(shallowProps);
@@ -86,7 +98,7 @@ export default class Button extends PureComponent<Props, State> {
   };
 
   // Dynamic CSS
-  getCSS = (type: ?string, shallowProps: Object) => {
+  getCSS = (type, shallowProps) => {
     const css = this.getCSSFromType(type, shallowProps);
     const iconSize = {};
     if (shallowProps.iconH && shallowProps.iconW) {
@@ -117,7 +129,7 @@ export default class Button extends PureComponent<Props, State> {
     };
   };
 
-  getIconNode = (icon: ?Element<any>): ?Element<any> => {
+  getIconNode = icon => {
     if (icon && React.Children.count(icon)) {
       const className = icon.props.className ? `${icon.props.className} btn-icon` : `btn-icon`;
       return React.cloneElement(icon, { className }, icon.props.children);
@@ -126,7 +138,7 @@ export default class Button extends PureComponent<Props, State> {
     return null;
   };
 
-  renderButton = (context: Object) => {
+  renderButton = context => {
     const {
       style,
       bgcHover,

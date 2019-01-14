@@ -1,9 +1,8 @@
 import React from 'react';
-
-import type { Props } from './google.d';
+import PropTypes from 'prop-types';
 
 // details on supported attributes for svg - https://reactjs.org/docs/dom-elements.html
-const GoogleLogo = (props: Props) => (
+const GoogleLogo = props => (
   <svg
     className={props.className}
     enableBackground='new 0 0 400 400'
@@ -48,5 +47,9 @@ const GoogleLogo = (props: Props) => (
     </g>
   </svg>
 );
+
+GoogleLogo.propTypes = {
+  className: PropTypes.string.isRequired,
+};
 
 export default GoogleLogo;

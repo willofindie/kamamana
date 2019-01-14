@@ -2,11 +2,15 @@ import compose from './compose';
 import { isString } from '/utils/validators';
 // Help taken from - https://stackoverflow.com/a/5624139/2849127
 
-export type Color = { r: number, g: number, b: number, a?: number };
+/**
+ * type Color: { r: number, g: number, b: number }
+ */
 
-// Tests for emptiness for strings and numbers only...
-// For empty object, collection, map, or set, use `lodash.isEmpty`
-export const isEmptyWithoutZero = (value: any) => {
+/**
+ * Tests for emptiness for strings and numbers only...
+ * For empty object, collection, map, or set, use `lodash.isEmpty`
+ */
+export const isEmptyWithoutZero = value => {
   return typeof value === 'string' || value instanceof String
     ? value.length === 0
     : value === undefined || value === null || isNaN(value);
@@ -16,23 +20,30 @@ export const isEmptyWithoutZero = (value: any) => {
  * Returns and array of [r, g, b], else []
  * @param {string} rgbString RGB string of format rgb(r, g, b)
  */
-export const splitRGBfromRGBString = (rgbString: string): Array<string> => {
-  const result: ?Array<string> = /^rgb\(\s*?(\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\s*\)$/i.exec(
-    rgbString
-  );
+export const splitRGBfromRGBString = rgbString => {
+  const result = /^rgb\(\s*?(\d{1,3}),\s*(\d{1,3}),\s*(\d{1,3})\s*\)$/i.exec(rgbString);
   return result ? result.splice(1) : [];
 };
 
-export const extractIntegerFromHexString = (hexString: ?string): Array<number> => {
+/**
+ * Returns Decimal value for Hex strings
+ * @param {string} hexString three/six characters hex string to convert to decimal number array
+ * @returns {Array} Decimal Integers for Hex Values
+ */
+export const extractIntegerFromHexString = hexString => {
   // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
   var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
   const _hex =
     hexString && hexString.replace(shorthandRegex, (m, r, g, b) => `#${r + r}${g + g}${b + b}`);
-  const result: ?Array<string> = _hex ? /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(_hex) : [];
+  const result = _hex ? /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(_hex) : [];
   return result ? result.splice(1).map(val => parseInt(val, 16)) : [];
 };
 
-export const componentToHex = (c: number) => {
+/**
+ * @param {number} c Convert a Decimal number from 0 - 255, to it's respective hex value
+ * @returns {string} Hex Value of a passed decimal value
+ */
+export const componentToHex = c => {
   if (c / 255 < 0 || c / 255 > 1) {
     return null;
   }
@@ -42,9 +53,10 @@ export const componentToHex = (c: number) => {
 
 /**
  * Excepts a string of format `rgb(r, g, b)`
- * @param {string} rgb RGB CSS String to convert to Hex
+ * @param {string | object} rgb RGB CSS String or Color Object to convert to Hex
+ * @returns {string} CSS compatible Hex string
  */
-export const rgbToHex = (rgb: ?string | ?Color) => {
+export const rgbToHex = rgb => {
   let r, g, b;
   if (!rgb) {
     return null;
@@ -59,22 +71,34 @@ export const rgbToHex = (rgb: ?string | ?Color) => {
   return r && g && b ? `#${r}${g}${b}` : null;
 };
 
-export const hexToRgb = (hex: ?string): ?Color => {
+/**
+ * @param {string} hex CSS Compatible Hex String
+ * @returns {object} Color Object {r, g, b}
+ */
+export const hexToRgb = hex => {
   const [r, g, b] = extractIntegerFromHexString(hex);
   return !isNaN(r) && !isNaN(g) && !isNaN(b) ? { r, g, b } : null;
 };
 
-export const getBoundedChangeAmount = (amount: number = 0) => {
+/**
+ * Converts the number to be in the range from 0 - 100
+ * @param {number} amount any number
+ * @return {number} Amount between 0 - 100
+ */
+export const getBoundedChangeAmount = amount => {
   const _amount = amount < 0 ? 0 : amount > 100 ? 100 : amount;
   return (_amount / 100) * 255;
 };
 
 /**
- * This method is not the efficient way for lightening the colors.. Will understand and figure things out later
+ * Shader helps in Lighten / Darken the Color by the given amount.
+ * NOTE: This method is not the efficient way for lightening the colors.. Will understand and figure things out later
  * v0.1 :P
  * It's easiest possible way to shade colors, help taken from https://stackoverflow.com/a/13542669/2849127
+ * @param {object} color Color Object
+ * @param {number} amount Percent Value between 0 - 100, by which shader should lighten/darken the color
  */
-export const shader = (color: ?Color, amount: number): ?Color => {
+export const shader = (color, amount) => {
   if (
     color &&
     color.hasOwnProperty('r') &&
@@ -94,17 +118,31 @@ export const shader = (color: ?Color, amount: number): ?Color => {
   return color;
 };
 
-// Wanted to use composition here, but not sure if it's possible with these functions??
-export const lighten = (color: ?Color, amount: number) => {
+/**
+ * Lightens the Color by the given amount
+ * @param {object} color Color Object to work with
+ * @param {number} amount Amount by which the Color should get lighten
+ */
+export const lighten = (color, amount) => {
   return shader(color, getBoundedChangeAmount(amount));
 };
 
-export const darken = (color: ?Color, amount: number) => {
+/**
+ * Darkens the Color by the given amount
+ * @param {object} color Color Object to work with
+ * @param {number} amount Amount by which the Color should get Darken
+ */
+export const darken = (color, amount) => {
   return shader(color, -getBoundedChangeAmount(amount));
 };
 
-// Help taken from https://github.com/mapbox/react-colorpickr/blob/5c7d8498c539a99c1330a83b4c7d6a79b7daaff9/src/colorfunc.js#L6
-export const isDark = (color: ?Color) => {
+/**
+ * Checks if the given color is Dark or Light
+ * Help taken from https://github.com/mapbox/react-colorpickr/blob/5c7d8498c539a99c1330a83b4c7d6a79b7daaff9/src/colorfunc.js#L6
+ * @param {object} color Color Object
+ * @returns {boolean}
+ */
+export const isDark = color => {
   if (color) {
     const { r, g, b } = color;
     return !(r * 0.299 + g * 0.587 + b * 0.114 > 186);
@@ -112,26 +150,47 @@ export const isDark = (color: ?Color) => {
   return false;
 };
 
+/**
+ * Composed Function to verify a CSS Hex String is Dark or Bright
+ * @param {string} hexString CSS compatible Hex String
+ * @returns {boolean}
+ */
 export const isDarkHex = compose(
   hexToRgb,
   isDark
 );
 
-export const lightenHexToAmount = (amount: number) =>
+/**
+ * Lightens a color in Hex format by the given amount
+ * @param {number} amount Amount by which the Hex Color should get lighten to
+ * @return {string} CSS Compatible Hex String, after getting lighter
+ */
+export const lightenHexToAmount = amount =>
   compose(
     hexToRgb,
     rgbColor => lighten(rgbColor, amount),
     rgbToHex
   );
 
-export const darkenHexToAmount = (amount: number) =>
+/**
+ * Darkens a color in Hex format by the given amount
+ * @param {number} amount Amount by which the Hex Color should get lighten to
+ * @return {string} CSS Compatible Hex String, after getting darker
+ */
+export const darkenHexToAmount = amount =>
   compose(
     hexToRgb,
     rgbColor => darken(rgbColor, amount),
     rgbToHex
   );
 
-export const rgba = (color: string | Color, alpha: number = 0.5) => {
+/**
+ * Converts a RGB Object / Hex String to `rgba()` string, with passed alpha, or RGBA Object to `rgba()` string with the same alpha value
+ * @param {string | object} color Either a Hex String or a Color Object
+ * @param {number} alpha a number between 0-1, that replaces Colors alpha channel if not present already
+ * @returns {string} rgba(r, g, b, a) string
+ */
+export const rgba = (color, alpha = 0.5) => {
   const _rgba = isString(color) ? hexToRgb(color) : color;
   return _rgba ? `rgba(${_rgba.r}, ${_rgba.g}, ${_rgba.b}, ${_rgba.a || alpha})` : '';
 };

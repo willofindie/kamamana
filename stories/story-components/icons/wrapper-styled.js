@@ -1,21 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { jsx } from '/src/nano';
-
-import type { Node, Element } from 'react';
-
-export type Props = {
-  bgc?: string,
-  className?: string,
-  children?: Node,
-};
-
-export type Styles = {
-  w: string | number,
-  h: string | number,
-  bgc?: string,
-  p?: string | number,
-  bdrs?: string | number,
-};
 
 const WrapperJSX = jsx(
   'div',
@@ -31,8 +16,8 @@ const WrapperJSX = jsx(
   'icon-wrapper'
 );
 
-const WrapperStyled = (props: Props): Element<typeof WrapperJSX> => {
-  let css: Styles = {};
+const WrapperStyled = props => {
+  let css = {};
   if (props.bgc) {
     css.bgc = props.bgc;
     css.p = 2;
@@ -43,6 +28,12 @@ const WrapperStyled = (props: Props): Element<typeof WrapperJSX> => {
       {props.children}
     </WrapperJSX>
   );
+};
+
+WrapperStyled.propTypes = {
+  bgc: PropTypes.string,
+  className: PropTypes.string,
+  children: PropTypes.node,
 };
 
 export default WrapperStyled;

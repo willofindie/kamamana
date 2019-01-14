@@ -1,17 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import theme from './context-theme';
-import type { Node, Context } from 'react';
 
-type KContext = Context<Object>;
-const KamamanaContext: KContext = React.createContext(theme);
+const KamamanaContext = React.createContext(theme);
 
-type Props = {
-  kTheme: Object,
-  children: Node,
-};
-
-export const KamamanaProvider = ({ children, kTheme }: Props) => (
+export const KamamanaProvider = ({ children, kTheme }) => (
   <KamamanaContext.Provider value={kTheme}>{children}</KamamanaContext.Provider>
 );
+
+KamamanaProvider.propTypes = {
+  kTheme: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired,
+};
 
 export const KamamanaConsumer = KamamanaContext.Consumer;

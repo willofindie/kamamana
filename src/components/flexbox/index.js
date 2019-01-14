@@ -1,10 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import FlexboxStyled from './flex-styled';
 import FlexboxItemStyled from './flex-item-styled';
 
-import type { Props, State, ItemElement } from './index.d';
-
-export default class Flexbox extends React.PureComponent<Props, State> {
+export default class Flexbox extends React.PureComponent {
+  static propTypes = {
+    children: PropTypes.node,
+    cols: PropTypes.string,
+    style: PropTypes.object.isRequired,
+  };
   static defaultProps = {
     style: {
       fxd: 'row',
@@ -13,7 +17,7 @@ export default class Flexbox extends React.PureComponent<Props, State> {
 
   // This method helps in wrapping flex items inside <FlexItemStyled /> if already not inside it.
   // Helps in removing extra code for <FlexItemStyled /> Wrappers...
-  prefix = (props: Props, colSpanList: ?Array<number>): Array<ItemElement> => {
+  prefix = (props, colSpanList) => {
     const childCount = React.Children.count(props.children);
     let total, colCount;
     if (colSpanList) {

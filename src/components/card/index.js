@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import memoizeOne from 'memoize-one';
 import { KamamanaConsumer } from '/src/context';
 import defaultTheme from '/src/theme';
@@ -8,21 +9,22 @@ import CardStyled from './card-styled';
 import CardTitle from './title';
 import CardContent from './content';
 
-import type { Props } from './index.d';
-
-export default class Card extends React.PureComponent<Props> {
+export default class Card extends React.PureComponent {
+  static propTypes = {
+    title: PropTypes.node,
+    style: PropTypes.object.isRequired,
+    children: PropTypes.node,
+  };
   static defaultProps = {
     style: {},
   };
 
-  getMemoizedCSS: Function;
-
-  constructor(props: Props) {
+  constructor(props) {
     super(props);
     this.getMemoizedCSS = memoizeOne(this.getCSS, shouldUpdateMemoize);
   }
 
-  getTitle = (css: Object) => {
+  getTitle = css => {
     if (!this.props.title) {
       return null;
     } else if (
@@ -35,7 +37,7 @@ export default class Card extends React.PureComponent<Props> {
     return <CardTitle style={css}>{this.props.title}</CardTitle>;
   };
 
-  getContent = (css: Object) => {
+  getContent = css => {
     if (
       !isString(this.props.children) &&
       React.Children.count(this.props.children) === 1 &&
@@ -46,7 +48,7 @@ export default class Card extends React.PureComponent<Props> {
     return <CardContent style={css}>{this.props.children}</CardContent>;
   };
 
-  getCSS = (shallowProps: Object) => {
+  getCSS = shallowProps => {
     return {
       c: shallowProps.context.fadedBlack,
       bgc: shallowProps.context.fadedWhite,
@@ -54,7 +56,7 @@ export default class Card extends React.PureComponent<Props> {
     };
   };
 
-  renderCard = (context: Object) => {
+  renderCard = context => {
     const shallowProps = { context, style: this.props.style };
     const css = this.getMemoizedCSS(shallowProps);
     return (

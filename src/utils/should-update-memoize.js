@@ -1,24 +1,24 @@
+import { isObject } from './validators';
 /**
+ * Shallowly Compares an Object to one level down.
  * O(n) complexity for `shallowProps`. so looks ok for now.
+ * @param {Array<any>} newArgs New Arguments that needs to compared to `oldArgs`
+ * @param {Array<any>} oldArgs Old Arguments
+ * @returns {boolean} True if shallow comparison passes for every argument.
  */
-export default (newArgs: mixed[], oldArgs: mixed[]): boolean =>
+export default (newArgs, oldArgs) =>
   newArgs.length === oldArgs.length &&
-  newArgs.every(
-    (newArg: mixed, index: number): boolean => {
-      if (newArg && typeof newArg === 'object' && typeof oldArgs[index] === 'object') {
-        // this check is very vague, but since I know (for now) args can be either string or object, it will work fine.
-        const next: Object = newArg;
-        const last: Object = oldArgs[index];
-        return Object.keys(next).every(
-          // Helps in one level down shallow comparison for objects...
-          (key: string): boolean => {
-            if (next.hasOwnProperty(key) && last.hasOwnProperty(key)) {
-              return next[key] === last[key];
-            }
-            return false;
+  newArgs.every((newArg, index) => {
+    if (isObject(newArg) && isObject(oldArgs[index])) {
+      return Object.keys(newArg).every(
+        // Helps in one level down shallow comparison for objects...
+        key => {
+          if (newArg.hasOwnProperty(key) && oldArgs[index].hasOwnProperty(key)) {
+            return newArg[key] === oldArgs[index][key];
           }
-        );
-      }
-      return newArg === oldArgs[index];
+          return false;
+        }
+      );
     }
-  );
+    return newArg === oldArgs[index];
+  });

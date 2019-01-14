@@ -33,7 +33,7 @@ const Button = jsx(
 
 export default Button;
 
-export const disabledCSS = (context: Object) => ({
+export const disabledCSS = context => ({
   cur: 'not-allowed',
   bgc: context.light.disabled,
   c: context.light.disabledFg,

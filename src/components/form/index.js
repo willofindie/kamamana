@@ -1,22 +1,20 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 
-import type { Node, ElementRef } from 'react';
+class Form extends PureComponent {
+  static propTypes = {
+    children: PropTypes.node.isRequired,
+    onSubmit: PropTypes.func.isRequired,
+    onReset: PropTypes.func,
+  };
 
-type Props = {
-  children: Node,
-  onSubmit: Function,
-  onReset?: Function,
-};
-
-class Form extends PureComponent<Props> {
-  element: ?ElementRef<'form'>;
-  handleSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
+  handleSubmit = e => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
     this.props.onSubmit(formData);
   };
 
-  handleReset = (e: SyntheticEvent<HTMLFormElement>) => {
+  handleReset = e => {
     if (this.props.onReset) {
       this.props.onReset();
       return;

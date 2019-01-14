@@ -1,13 +1,11 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import memoizeOne from 'memoize-one';
 import { KamamanaConsumer } from '/src/context';
 import InputButtonStyled, { disabledCSS } from './input-button-styled';
 import shouldUpdateMemoize from '/utils/should-update-memoize';
 import { darkenHexToAmount, isDarkHex, hexToRgb } from '/utils/colors';
 import { isNumber, isEmpty } from '/utils/validators';
-
-import type { Props, MemoizedData } from './index-button.d';
-import type { Element, ElementRef } from 'react';
 
 const darkenHexByTen = darkenHexToAmount(10);
 
@@ -16,23 +14,43 @@ const darkenHexByTen = darkenHexToAmount(10);
  *
  *  - Only button types like `submit`, `reset` and `button`
  *
- * This Component is a total replica of Button component.
+ * This Component is a total replica of Button component, w.r.t. styles.
  */
-export default class InputButton extends PureComponent<Props> {
+export default class InputButton extends PureComponent {
+  static propTypes = {
+    // Styles specific Props
+    style: PropTypes.object.isRequired,
+    bgcHover: PropTypes.string, // Background Hover Color
+    fgcHover: PropTypes.string, // Text Hover Color
+    bdcHover: PropTypes.string, // Text Hover Color
+
+    id: PropTypes.string,
+    className: PropTypes.string,
+    htmlType: PropTypes.string.isRequired,
+    type: PropTypes.oneOf(['bordered', 'ghost']),
+    block: PropTypes.bool,
+    // Button-DOM Specific Props
+    disabled: PropTypes.bool,
+    text: PropTypes.string,
+    icon: PropTypes.element,
+    iconW: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    iconH: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    // Event Handlers
+    onClick: PropTypes.func,
+    onFocus: PropTypes.func,
+    onBlur: PropTypes.func,
+  };
   static defaultProps = {
     style: {},
     htmlType: 'submit',
   };
 
-  inputWrapper: ?ElementRef<'span'>;
-  getMemoizedData: Function;
-
-  constructor(props: Props) {
+  constructor(props) {
     super(props);
     this.getMemoizedData = memoizeOne(this.getTypeAndStyles, shouldUpdateMemoize);
   }
 
-  getGhostCSS = (shallowProps: Object) => {
+  getGhostCSS = shallowProps => {
     const btnTheme = shallowProps.context.btn || {};
     const bgc = 'transparent';
     const bgcHover = bgc;
@@ -48,7 +66,7 @@ export default class InputButton extends PureComponent<Props> {
     };
   };
 
-  getBorderedCSS = (shallowProps: Object) => {
+  getBorderedCSS = shallowProps => {
     const btnTheme = shallowProps.context.btn || {};
     const bgc = shallowProps.context.fadedWhite;
     const bgcHover = bgc;
@@ -64,7 +82,7 @@ export default class InputButton extends PureComponent<Props> {
     };
   };
 
-  getDefaultCSS = (shallowProps: Object) => {
+  getDefaultCSS = shallowProps => {
     const btnTheme = shallowProps.context.btn || {};
     const bgc = shallowProps.style.bgc || btnTheme.bgc || shallowProps.context.light.primary;
     const bgcHover =
@@ -82,7 +100,7 @@ export default class InputButton extends PureComponent<Props> {
     };
   };
 
-  getCSSFromType = (shallowProps: Object) => {
+  getCSSFromType = shallowProps => {
     switch (shallowProps.type) {
       case 'ghost':
         return this.getGhostCSS(shallowProps);
@@ -94,7 +112,7 @@ export default class InputButton extends PureComponent<Props> {
   };
 
   // Dynamic CSS
-  getCSS = (shallowProps: Object) => {
+  getCSS = shallowProps => {
     const css = this.getCSSFromType(shallowProps);
     const iconSize = {};
     if (shallowProps.iconH && shallowProps.iconW) {
@@ -132,7 +150,7 @@ export default class InputButton extends PureComponent<Props> {
    * Currently `this.getMemoizedData` is used for memoizing this function.
    *
    */
-  getTypeAndStyles = (htmlType: string, shallowProps: Object): MemoizedData => {
+  getTypeAndStyles = (htmlType, shallowProps) => {
     const memoizedData = {
       type: 'submit',
       css: null,
@@ -149,7 +167,7 @@ export default class InputButton extends PureComponent<Props> {
     return memoizedData;
   };
 
-  getIconNode = (icon: ?Element<any>): ?Element<any> => {
+  getIconNode = icon => {
     if (icon && React.Children.count(icon)) {
       const className = icon.props.className ? `${icon.props.className} btn-icon` : `btn-icon`;
       return React.cloneElement(icon, { className }, icon.props.children);
@@ -158,7 +176,7 @@ export default class InputButton extends PureComponent<Props> {
     return null;
   };
 
-  handleClick = (e: SyntheticInputEvent<HTMLInputElement>) => {
+  handleClick = e => {
     if (this.props.onClick) {
       this.props.onClick(e);
       return;
@@ -173,7 +191,7 @@ export default class InputButton extends PureComponent<Props> {
     inputEle && inputEle.dispatchEvent(event);
   };
 
-  renderInput = (context: Object) => {
+  renderInput = context => {
     const {
       style,
       bgcHover,
