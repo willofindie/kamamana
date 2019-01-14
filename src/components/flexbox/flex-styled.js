@@ -4,6 +4,7 @@ const Container = jsx(
   'div',
   {
     d: 'flex',
+    fxd: 'column',
   },
   'FlexContainer'
 );

@@ -16,7 +16,7 @@ export default class CardTitle extends React.PureComponent {
 
   getCSS = context => {
     return {
-      c: context.fadedBlack,
+      c: 'inherit',
       ...this.props.style,
     };
   };

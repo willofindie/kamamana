@@ -3,7 +3,8 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
 import Flexbox from '/components/flexbox';
-import FlexItem from '/components/flexbox/flex-item-styled';
+import Row from '/components/flexbox/flex-row';
+import Column from '/components/flexbox/flex-col';
 import Card from '/components/card';
 import Form from '/components/form';
 import { Input, InputButton } from '/components/form/input';
@@ -37,30 +38,36 @@ buttons.add('inside form', () => {
           action('form:onSubmit')(formData);
         }}
       >
-        <Flexbox style={{ fxd: 'column' }}>
-          <Input
-            label='Name: '
-            cols='1:6'
-            style={{ mb: 15 }}
-            name='name'
-            placeholder='Enter name'
-          />
-          <Input
-            label='Password: '
-            style={{ mb: 15 }}
-            htmlType='password'
-            name='pass'
-            placeholder='Password'
-          />
-          <Flexbox style={{ jc: 'flex-end' }}>
-            <FlexItem style={{ fxg: 0, fxb: 'auto' }}>
-              <InputButton text='Submit' />
-            </FlexItem>
-            <FlexItem style={{ fxg: 0, fxb: 'auto', ta: 'right' }}>
-              <InputButton htmlType='reset' text='Reset' />
-            </FlexItem>
-          </Flexbox>
-        </Flexbox>
+        <Row>
+          <Column>
+            <Input
+              label='Name: '
+              cols='1:6'
+              style={{ mb: 15 }}
+              name='name'
+              placeholder='Enter name'
+            />
+          </Column>
+        </Row>
+        <Row>
+          <Column>
+            <Input
+              label='Password: '
+              style={{ mb: 15 }}
+              htmlType='password'
+              name='pass'
+              placeholder='Password'
+            />
+          </Column>
+        </Row>
+        <Row style={{ jc: 'flex-end' }}>
+          <Column style={{ fxg: 0, fxb: 'auto' }}>
+            <InputButton text='Submit' />
+          </Column>
+          <Column style={{ fxg: 0, fxb: 'auto', ta: 'right' }}>
+            <InputButton htmlType='reset' text='Reset' />
+          </Column>
+        </Row>
       </Form>
     </Card>
   );

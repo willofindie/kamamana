@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import memoizeOne from 'memoize-one';
-import FlexboxStyled from './flex-styled';
-import Row from './flex-row';
+import FlexRowStyled from './flex-row-styled';
+import Column from './flex-col';
 import shouldUpdateMemoize from '/utils/should-update-memoize';
 import { isNumber } from '/utils/validators';
 
-export default class Flexbox extends React.PureComponent {
-  static CLASS_NAME = 'kamamana-flex-box';
+export default class Row extends React.PureComponent {
+  static CLASS_NAME = 'kamamana-flex-row';
   static propTypes = {
     children: PropTypes.node,
     style: PropTypes.object.isRequired,
-    gutter: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    gutter: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   };
   static defaultProps = {
     style: {},
@@ -27,27 +27,29 @@ export default class Flexbox extends React.PureComponent {
     if (isNumber(gutter)) {
       return parseInt(gutter, 10);
     }
-    return 15;
+    return 0;
   };
 
   getCSS = shallowProps => {
     const gutter = this.getGutterSize(shallowProps.gutter);
-
     return {
-      [`& > .${Row.CLASS_NAME} + .${Row.CLASS_NAME}`]: {
-        mt: gutter,
+      [`& > .${Column.CLASS_NAME} + .${Column.CLASS_NAME}`]: {
+        ml: gutter,
       },
       ...shallowProps.style,
     };
   };
 
   render() {
-    const shallowProps = { style: this.props.style, gutter: this.props.gutter };
+    const shallowProps = {
+      style: this.props.style,
+      gutter: this.props.gutter,
+    };
     const css = this.getMemoizedCSS(shallowProps);
     return (
-      <FlexboxStyled css={css} className={Flexbox.CLASS_NAME}>
+      <FlexRowStyled css={css} className={Row.CLASS_NAME}>
         {this.props.children}
-      </FlexboxStyled>
+      </FlexRowStyled>
     );
   }
 }

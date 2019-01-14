@@ -20,7 +20,7 @@ export default class CardContent extends React.PureComponent {
   // since it's a very simple calculation on each render, memoizing it doesn't look good...
   getCSS = context => {
     return {
-      c: lightenHexBy10(context.fadedBlack),
+      c: 'inherit',
       ...this.props.style,
     };
   };
