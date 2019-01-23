@@ -1,23 +1,22 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { KamamanaConsumer } from '/src/context';
 import CardTitleStyled from './car-title-styled';
 
-import type { Node } from 'react';
-
-export type Props = {
-  children?: Node,
-  className: string,
-  style?: Object,
-};
-
-export default class CardTitle extends React.Component<Props> {
+export default class CardTitle extends React.PureComponent {
+  static propTypes = {
+    children: PropTypes.node,
+    className: PropTypes.string.isRequired,
+    style: PropTypes.object.isRequired,
+  };
   static defaultProps = {
     className: 'title',
+    style: {},
   };
 
-  getCSS = (context: Object) => {
+  getCSS = context => {
     return {
-      c: context.fadedBlack,
+      c: 'inherit',
       ...this.props.style,
     };
   };

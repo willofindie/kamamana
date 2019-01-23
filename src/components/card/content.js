@@ -1,26 +1,26 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { KamamanaConsumer } from '/src/context';
 import { lightenHexToAmount } from '/utils/colors';
 import CardContentStyled from './card-content-styled';
 
-import type { Node } from 'react';
-
 const lightenHexBy10 = lightenHexToAmount(10);
 
-export type Props = {
-  children?: Node,
-  className: string,
-  style?: Object,
-};
-
-export default class CardContent extends React.Component<Props> {
+export default class CardContent extends React.PureComponent {
+  static propTypes = {
+    children: PropTypes.node,
+    className: PropTypes.string.isRequired,
+    style: PropTypes.object.isRequired,
+  };
   static defaultProps = {
     className: 'content',
+    style: {},
   };
 
-  getCSS = (context: Object) => {
+  // since it's a very simple calculation on each render, memoizing it doesn't look good...
+  getCSS = context => {
     return {
-      c: lightenHexBy10(context.fadedBlack),
+      c: 'inherit',
       ...this.props.style,
     };
   };

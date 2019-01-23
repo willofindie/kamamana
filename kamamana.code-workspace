@@ -1,11 +1,12 @@
 {
-	"folders": [
-		{
-			"path": "."
-		}
-	],
-	"settings": {
-		"javascript.validate.enable": false,
-		"flow.useNPMPackagedFlow": true
-	}
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "javascript.validate.enable": false,
+    "flow.useNPMPackagedFlow": true,
+    "editor.formatOnSave": true
+  }
 }

@@ -1,11 +1,6 @@
 import React from 'react';
-import type { Node } from 'react';
+import PropTypes from 'prop-types';
 import { jsx } from '/src/nano';
-
-type Props = {
-  children: Node,
-  bgc: string,
-};
 
 const Colored = jsx(
   'div',
@@ -21,5 +16,10 @@ const Colored = jsx(
 );
 
 const ColoredLayer = (props: Props) => <Colored css={{ bgc: props.bgc }}>{props.children}</Colored>;
+
+ColoredLayer.propTypes = {
+  children: PropTypes.node.isRequired,
+  bgc: PropTypes.string.isRequired,
+};
 
 export default ColoredLayer;

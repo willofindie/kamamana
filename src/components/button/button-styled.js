@@ -18,10 +18,11 @@ const Button = jsx(
       ol: 'none',
     },
     '& .btn-icon': {
-      mr: 8,
+      h: 16,
+      w: 16,
     },
     '& .btn-text': {
-      fz: '14px',
+      fz: '1em',
     },
     '& .btn-icon + .btn-text': {
       ml: '8px',
@@ -32,7 +33,7 @@ const Button = jsx(
 
 export default Button;
 
-export const disabledCSS = (context: Object) => ({
+export const disabledCSS = context => ({
   cur: 'not-allowed',
   bgc: context.light.disabled,
   c: context.light.disabledFg,

@@ -6,7 +6,7 @@ const FlexItem = jsx(
     fxg: 1,
     fxs: 1,
   },
-  'FlexItem'
+  'FlexColumn'
 );
 
 export default FlexItem;

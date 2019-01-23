@@ -13,7 +13,7 @@ module.exports = mode => {
         { test: /\.css$/, use: ['style-loader', 'css-loader'] },
         {
           test: /\.jsx?$/,
-          sideEffects: true,
+          sideEffects: false,
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
