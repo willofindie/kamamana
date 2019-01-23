@@ -29,7 +29,7 @@ export default class Input extends PureComponent {
     style: PropTypes.object, // Reflects Container Styles...
     inputStyle: PropTypes.object.isRequired, // Reflects Input Styles..
     bdcHover: PropTypes.string,
-    cols: PropTypes.string.isRequired, // Reflects how label and input should be aligned, and grow
+    labelSpan: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired, // Reflects how label and input should be aligned, and grow
     // Methods...
     onChange: PropTypes.func,
   };
@@ -37,7 +37,7 @@ export default class Input extends PureComponent {
     inputStyle: {},
     htmlType: 'text',
     type: 'default',
-    cols: '1:4',
+    labelSpan: 150,
   };
 
   get validator() {
@@ -93,17 +93,20 @@ export default class Input extends PureComponent {
     }
   };
 
+  getLabelSpanSize = span => {
+    if (isNumber(span)) {
+      return parseInt(span, 10);
+    }
+    return 150;
+  };
+
   getCSS = shallowProps => {
     const css = this.getCSSFromType(shallowProps);
     const focusColor = rgba(css.bdcHover, 0.3);
-    const spans = shallowProps.cols.split(':').map(num => parseInt(num, 10));
-    const totalWidth = spans.reduce((sum, val) => sum + val, 0);
+    const span = this.getLabelSpanSize(shallowProps.labelSpan);
     return {
       '& .input-label': {
-        fxb: `${(spans[0] / totalWidth) * 100}%`,
-      },
-      '& .input-component': {
-        fxb: `${(spans[1] / totalWidth) * 100}%`,
+        fxb: `${span}px`,
       },
       '& .input-component > input': {
         bgc: css.bgc,
@@ -161,14 +164,14 @@ export default class Input extends PureComponent {
       inputStyle,
       bdcHover,
       validator,
-      cols,
+      labelSpan,
       ...rest
     } = this.props;
     const memoizedData = this.getMemoizedData(htmlType, {
       context,
       type,
       style,
-      cols,
+      labelSpan,
       inputStyle,
       bdcHover,
     });

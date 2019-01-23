@@ -7,10 +7,10 @@ const Container = jsx(
     ai: 'center',
     '& .input-label': {
       mr: 8,
-      flex: '1 1 20%',
+      flex: '1 0 auto',
     },
     '& .input-component': {
-      flex: '1 1 80%',
+      flex: '1 1 100%',
     },
     '& .input-component > input': {
       w: '100%',
