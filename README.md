@@ -6,6 +6,9 @@
 [![linting: eslint](https://img.shields.io/badge/linting-eslint-463fd4.svg?style=flat)](https://github.com/eslint/eslint)
 [![type-check: flow](https://img.shields.io/badge/type--check-flow-E8BD36.svg?style=flat)](https://github.com/facebook/flow/)
 
+There much better alternatives and a lot many component libraries out there, this library has become redundant and is not maintained anymore.
+I have no intention to work on this project anymore. Thanks for all your support!
+
 > Designed ReactJS Components for personal use.
 
 Set of High-Order HTML Elements as React Components, with default theme set for them, which can also be customized to any extent required, keeping the bundle size for the project using this library small.
